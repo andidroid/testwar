@@ -54,7 +54,7 @@
 
   <properties>
     <enforcer.skip>true</enforcer.skip>
-    <java.version>1.8</java.version>
+    <java.version>11</java.version>
     <javaee.version>8.0.0</javaee.version>
     <microprofile.version>4.0</microprofile.version>
 
@@ -64,8 +64,12 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
 
+    <mockito-core.version>3.3.0</mockito-core.version>
+
     <rest-assured.version>4.4.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
+    <testcontainers.version>1.16.0</testcontainers.version>
+    <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
 
     <wildfly.version>25.0.0.Beta1</wildfly.version>
 
@@ -73,6 +77,14 @@
 
     <wildfly-jar-maven-plugin.version>5.0.2.Final</wildfly-jar-maven-plugin.version>
   </properties>
+
+  <!-- External non standard repositories -->
+  <repositories>
+    <repository>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/andidroid/test</url>
+    </repository>
+  </repositories>
 
   <dependencyManagement>
     <dependencies>
@@ -123,7 +135,7 @@
     <dependency>
       <groupId>org.testcontainers</groupId>
       <artifactId>testcontainers</artifactId>
-      <version>1.16.0</version>
+      <version>${testcontainers.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -149,6 +161,30 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>mockserver</artifactId>
+      <version>${testcontainers.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mock-server</groupId>
+      <artifactId>mockserver-client-java</artifactId>
+      <version>${mockserver-client-java.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.32</version>
+      <scope>test</scope>
+    </dependency>
   </dependencies>
 
   <build>
