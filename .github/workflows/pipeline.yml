@@ -26,7 +26,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build and Test
-        run: mvn -B -U clean package -s settings.xml -Pgithub
+        run: mvn -B -U clean package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   test:
     name: Test
