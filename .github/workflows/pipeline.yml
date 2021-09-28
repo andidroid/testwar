@@ -209,6 +209,6 @@ jobs:
           context: .
           push: true
           pull: true
-          tags: andidroid/testwar:latest
+          tags: ghcr.io/andidroid/testwar:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
