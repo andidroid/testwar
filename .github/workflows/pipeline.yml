@@ -208,6 +208,7 @@ jobs:
           file: ./Dockerfile
           context: .
           push: true
-          tags: test/testwar:latest
+          pull: true
+          tags: andidroid/testwar:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
