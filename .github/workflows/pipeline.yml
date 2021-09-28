@@ -186,6 +186,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
         with:
+          file: ./Dockerfile
           context: .
           push: true
           tags: testwar:latest
