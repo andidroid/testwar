@@ -197,6 +197,14 @@ jobs:
           distribution: "adopt"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-maven-modules
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: resolve maven dependencies
         run: mvn dependency:resolve
         env:
