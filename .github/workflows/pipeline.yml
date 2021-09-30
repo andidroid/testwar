@@ -229,7 +229,7 @@ jobs:
           server-id: ghcr.io
           settings-path: ${{ github.workspace }}
       - name: Publish to GitHub Container Registry
-        run: mvn jib:build -Dimage=ghcr.io/andidroid/testwar
+        run: mvn package jib:build -Dimage=ghcr.io/andidroid/testwar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
