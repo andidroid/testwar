@@ -197,6 +197,10 @@ jobs:
           distribution: "adopt"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: resolve maven dependencies
+        run: mvn dependency:resolve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/download-artifact@v2
         with:
           name: testwar-artifact
