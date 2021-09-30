@@ -1,0 +1,1 @@
+create table test (id bigint PRIMARY KEY, name varchar(255));

@@ -8,7 +8,7 @@
     <version>0.0.24</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -56,7 +56,7 @@
     <enforcer.skip>true</enforcer.skip>
     <java.version>11</java.version>
     <javaee.version>8.0.0</javaee.version>
-    <microprofile.version>4.0</microprofile.version>
+    <microprofile.version>4.0.1</microprofile.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -64,18 +64,21 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
 
-    <mockito-core.version>3.3.0</mockito-core.version>
-
+    <mockito.version>3.12.4</mockito.version>
     <rest-assured.version>4.4.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.16.0</testcontainers.version>
     <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
+
 
     <wildfly.version>25.0.0.Beta1</wildfly.version>
 
     <wildfly-datasources-galleon-pack.version>2.0.3.Final</wildfly-datasources-galleon-pack.version>
 
     <wildfly-jar-maven-plugin.version>5.0.2.Final</wildfly-jar-maven-plugin.version>
+    <jkube.version>1.4.0</jkube.version>
+    <flyway.version>7.15.0</flyway.version>
+    <postgres.version>42.2.24</postgres.version>
   </properties>
 
   <!-- External non standard repositories -->
@@ -109,6 +112,14 @@
         <version>${rest-assured.version}</version>
         <scope>test</scope>
       </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>${postgres.version}</version>
+      </dependency>
+
 
     </dependencies>
   </dependencyManagement>
@@ -185,6 +196,25 @@
       <version>1.7.32</version>
       <scope>test</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.flywaydb</groupId>
+      <artifactId>flyway-core</artifactId>
+      <version>${flyway.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -199,52 +229,28 @@
             <failOnMissingWebXml>false</failOnMissingWebXml>
           </configuration>
         </plugin>
-        <plugin>
-          <groupId>org.wildfly.plugins</groupId>
-          <artifactId>wildfly-jar-maven-plugin</artifactId>
-          <version>${wildfly-jar-maven-plugin.version}</version>
-          <configuration>
-            <feature-packs>
-              <feature-pack>
-                <location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</location>
-              </feature-pack>
-              <feature-pack>
-                <groupId>org.wildfly</groupId>
-                <artifactId>wildfly-datasources-galleon-pack</artifactId>
-                <version>${wildfly-datasources-galleon-pack.version}</version>
-              </feature-pack>
-            </feature-packs>
-            <layers>
-              <layer>jaxrs</layer>
-              <layer>observability</layer>
-              <layer>cloud-profile</layer>
 
-              <!--
-              <layer>remote-activemq</layer>
-              -->
-              <!--
-              <layer>postgresql-datasource</layer>
-              -->
-              <layer>web-console</layer>
-            </layers>
-            <excluded-layers>
-              <layer>deployment-scanner</layer>
-              <!--
-              <layer>messaging-activemq</layer>
-              -->
-              <layer>jms-activemq</layer>
-            </excluded-layers>
-            <plugin-options>
-              <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
-            </plugin-options>
-          </configuration>
+        <plugin>
+          <groupId>org.eclipse.jkube</groupId>
+          <artifactId>kubernetes-maven-plugin</artifactId>
+          <version>${jkube.version}</version>
           <executions>
             <execution>
               <goals>
-                <goal>package</goal>
+                <goal>resource</goal>
+                <goal>build</goal>
               </goals>
             </execution>
           </executions>
+          <configuration>
+            <enricher>
+              <config>
+                <jkube-service>
+                  <type>NodePort</type>
+                </jkube-service>
+              </config>
+            </enricher>
+          </configuration>
         </plugin>
 
       </plugins>
@@ -252,8 +258,20 @@
     <plugins>
 
       <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <includes>
+            <include>*/*Test.java</include>
+          </includes>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
-
+        <configuration>
+          <includes>
+            <include>*/*IT.java</include>
+          </includes>
+        </configuration>
         <executions>
           <execution>
             <goals>
@@ -281,6 +299,125 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.flywaydb</groupId>
+        <artifactId>flyway-maven-plugin</artifactId>
+        <version>${flyway.version}</version>
+        <configuration>
+          <url>jdbc:postgresql://host:port/database</url>
+          <user>postgres</user>
+        </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgres.version}</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>war</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-jar-maven-plugin</artifactId>
+        <version>${wildfly-jar-maven-plugin.version}</version>
+        <configuration>
+          <feature-packs>
+            <feature-pack>
+              <location>wildfly@maven(org.jboss.universe:community-universe)#${wildfly.version}</location>
+            </feature-pack>
+            <feature-pack>
+              <groupId>org.wildfly</groupId>
+              <artifactId>wildfly-datasources-galleon-pack</artifactId>
+              <version>${wildfly-datasources-galleon-pack.version}</version>
+            </feature-pack>
+          </feature-packs>
+          <layers>
+            <layer>jaxrs</layer>
+            <layer>observability</layer>
+            <layer>cloud-profile</layer>
+
+            <!--
+            <layer>remote-activemq</layer>
+            -->
+            <!---->
+            <layer>postgresql-datasource</layer>
+
+            <layer>web-console</layer>
+          </layers>
+          <excluded-layers>
+            <layer>deployment-scanner</layer>
+            <!--
+            <layer>messaging-activemq</layer>
+            -->
+            <layer>jms-activemq</layer>
+          </excluded-layers>
+          <plugin-options>
+            <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
+          </plugin-options>
+          <!-- required by jib to retrieve the bootable jar -->
+          <output-file-name>testwar.jar</output-file-name>
+        </configuration>
+        <!--
+        <executions>
+          <execution>
+            <goals>
+              <goal>package</goal>
+            </goals>
+          </execution>
+        </executions>
+      -->
+      </plugin>
+
+      <plugin>
+        <groupId>com.google.cloud.tools</groupId>
+        <artifactId>jib-maven-plugin</artifactId>
+        <version>3.1.4</version>
+        <configuration>
+          <!--
+          <containerizingMode>packaged</containerizingMode>
+          -->
+          <from>
+            <image>andidroid/testhollowjar:latest</image>
+          </from>
+
+
+          <to>
+            <image>andidroid/testwar</image>
+            <tags>${project.version}</tags>
+            <!-- to push to external repo -->
+            <!--<image>quay.io/<your organization>/jaxrs-jib</image>-->
+          </to>
+
+          <container>
+            <entrypoint>INHERIT</entrypoint>
+            <appRoot>/deployments/ROOT.war</appRoot>
+          </container>
+        </configuration>
+        <!--
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>dockerBuild</goal>
+            </goals>
+          </execution>
+        </executions>
+      -->
       </plugin>
 
     </plugins>
