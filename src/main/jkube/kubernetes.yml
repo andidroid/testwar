@@ -1,0 +1,82 @@
+---
+apiVersion: v1
+kind: List
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      jkube.io/scm-url: https://github.com/andidroid/testwar.git
+      jkube.io/git-url: https://github.com/andidroid/testwar.git
+      jkube.io/scm-tag: HEAD
+      jkube.io/git-commit: 1bac6654a58669a34338a58b4fa0ae77541580a7
+      jkube.io/git-branch: master
+    labels:
+      app: testwar
+      provider: jkube
+      version: 0.1.1-SNAPSHOT
+      group: me.andidroid
+    name: testwar
+  spec:
+    replicas: 1
+    revisionHistoryLimit: 2
+    selector:
+      matchLabels:
+        app: testwar
+        provider: jkube
+        group: me.andidroid
+    template:
+      metadata:
+        annotations:
+          jkube.io/scm-url: https://github.com/andidroid/testwar.git
+          jkube.io/git-url: https://github.com/andidroid/testwar.git
+          jkube.io/scm-tag: HEAD
+          jkube.io/git-commit: 1bac6654a58669a34338a58b4fa0ae77541580a7
+          jkube.io/git-branch: master
+        labels:
+          app: testwar
+          provider: jkube
+          version: 0.1.1-SNAPSHOT
+          group: me.andidroid
+      spec:
+        containers:
+        - env:
+          - name: POSTGRESQL_JNDI 
+            value: "java:jboss/datasources/PostgreSQLDS"
+          - name: POSTGRESQL_HOST 
+            value: "postgres-service"
+          - name: POSTGRESQL_PORT 
+            value: "5432"
+          - name: POSTGRESQL_USER 
+            value: "postgres"
+          - name: POSTGRESQL_PASSWORD 
+            value: "postgres"
+          - name: POSTGRESQL_DATABASE 
+            value: "test"
+          image: ghcr.io/andidroid/testwar:latest
+          imagePullPolicy: IfNotPresent
+          name: andidroid-testwar
+          securityContext:
+            privileged: false
+# Service
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: testwar-service
+    labels:
+      app: testwar
+  spec:
+    selector:
+      app: testwar
+    type: NodePort
+    ports:
+      - protocol: TCP
+        name: "8080"
+        port: 8080
+        targetPort: 8080
+        nodePort: 32000
+      - protocol: TCP
+        name: "9990"
+        port: 9990
+        targetPort: 9990
+        nodePort: 32001

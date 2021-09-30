@@ -232,6 +232,25 @@ jobs:
         run: mvn package jib:build -Dimage=ghcr.io/andidroid/testwar -DskipTests=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Kubernetes Resources
+        run: mvn k8s:resource
+      - name: Checkout GitOps Repo
+        uses: actions/checkout@v2
+        with:
+          repository: andidroid/testwargitops
+          path: testwargitops
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Copy Kubernetes Resources
+        run: cp target/classes/META-INF/jkube/kubernetes.yml testwargitops/kubernetes.yml
+      - name: Copy Kubernetes Resources
+        run: |
+          cd testwargitops
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add kubernetes.yml
+          git commit -m "kubernetes.yml"
+          git push
 
   docker_old:
     name: Docker old

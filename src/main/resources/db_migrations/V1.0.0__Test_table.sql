@@ -1,1 +1,1 @@
-create table test (id bigint PRIMARY KEY, name varchar(255));
+create table test (id bigint PRIMARY KEY, text varchar(255));
