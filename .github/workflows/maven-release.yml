@@ -31,6 +31,6 @@ jobs:
           mvn release:prepare -B -DautoVersionSubmodules=true -DskipTests=true
         
     - name: Publish to GitHub Packages Apache Maven
-      run: mvn release:perform -B -DskipTests=true
+      run: mvn release:perform -B -DskipTests=true -s settings.xml
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
