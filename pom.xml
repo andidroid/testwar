@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>0.0.24</version>
+    <version>0.0.25</version>
   </parent>
   <artifactId>testwar</artifactId>
   <version>0.1.1-SNAPSHOT</version>
@@ -250,7 +249,47 @@
                 </jkube-service>
               </config>
             </enricher>
+            <images>
+              <image>
+                <name>ghcr.io/andidroid/testwar:latest</name>
+              </image>
+            </images>
+            <!-- resources to be created -->
+            <resources>
+
+              <!-- Name of the replication controller, which will have a sane default (container alisa, mvn coords, ..) -->
+              <controllerName>${project.artifactId}-controller</controllerName>
+              <!-- Replica count-->
+              <replicas>2</replicas>
+
+              <!-- Dedicated section for (multiple) services to define -->
+              <services>
+                <service>
+                  <name>${project.artifactId}-service</name>
+                  <headless>false</headless>
+                  <type>NodePort</type>
+                  <ports>
+                    <port>
+                      <name>8080</name>
+                      <protocol>tcp</protocol>
+                      <port>8080</port>
+                      <targetPort>8080</targetPort>
+                      <nodePort>32000</nodePort>
+                    </port>
+                    <port>
+                      <name>9990</name>
+                      <protocol>tcp</protocol>
+                      <port>9990</port>
+                      <targetPort>9990</targetPort>
+                      <nodePort>32001</nodePort>
+                    </port>
+                  </ports>
+                </service>
+              </services>
+            </resources>
           </configuration>
+
+
         </plugin>
 
       </plugins>
