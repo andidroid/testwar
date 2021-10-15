@@ -55,7 +55,7 @@
     <enforcer.skip>true</enforcer.skip>
     <java.version>11</java.version>
     <javaee.version>8.0.0</javaee.version>
-    <microprofile.version>4.0.1</microprofile.version>
+    <microprofile.version>4.1</microprofile.version>
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -74,7 +74,7 @@
 
     <wildfly-datasources-galleon-pack.version>2.0.3.Final</wildfly-datasources-galleon-pack.version>
 
-    <wildfly-jar-maven-plugin.version>5.0.2.Final</wildfly-jar-maven-plugin.version>
+    <wildfly-jar-maven-plugin.version>6.0.0.Final</wildfly-jar-maven-plugin.version>
     <jkube.version>1.4.0</jkube.version>
     <flyway.version>7.15.0</flyway.version>
     <postgres.version>42.2.24</postgres.version>
