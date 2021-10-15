@@ -7,7 +7,7 @@
     <version>0.0.25</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.1.2-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -70,12 +70,13 @@
     <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
 
 
-    <wildfly.version>25.0.0.Beta1</wildfly.version>
+    <wildfly.version>25.0.0.Final</wildfly.version>
 
     <wildfly-datasources-galleon-pack.version>2.0.3.Final</wildfly-datasources-galleon-pack.version>
 
     <wildfly-jar-maven-plugin.version>6.0.0.Final</wildfly-jar-maven-plugin.version>
     <jkube.version>1.4.0</jkube.version>
+    <jib.version>3.1.4</jib.version>
     <flyway.version>8.0.1</flyway.version>
     <postgres.version>42.2.24</postgres.version>
   </properties>
@@ -426,7 +427,7 @@
       <plugin>
         <groupId>com.google.cloud.tools</groupId>
         <artifactId>jib-maven-plugin</artifactId>
-        <version>3.1.4</version>
+        <version>${jib.version}</version>
         <configuration>
           <!--
           <containerizingMode>packaged</containerizingMode>

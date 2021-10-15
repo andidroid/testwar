@@ -272,7 +272,7 @@ jobs:
           server-id: ghcr.io
           settings-path: ${{ github.workspace }}
       - name: Publish to GitHub Container Registry
-        run: mvn package jib:build -Dimage=ghcr.io/andidroid/testwar -DskipTests=true
+        run: mvn package jib:build -Djib.to.image=ghcr.io/andidroid/testwar -Djib.from.image=ghcr.io/andidroid/testhollowjar:latest -DskipTests=true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Build Kubernetes Resources
