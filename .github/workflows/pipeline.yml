@@ -194,7 +194,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=andidroid_testwar -Dsonar.organization=andidroid -Dsonar.host.url=https://sonarcloud.io
+        run: mvn package org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dskiptests=true -Dsonar.projectKey=andidroid_testwar -Dsonar.organization=andidroid -Dsonar.host.url=https://sonarcloud.io
 
   site:
     name: Site Generation
