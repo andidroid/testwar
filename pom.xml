@@ -76,7 +76,7 @@
 
     <wildfly-jar-maven-plugin.version>6.0.0.Final</wildfly-jar-maven-plugin.version>
     <jkube.version>1.4.0</jkube.version>
-    <flyway.version>7.15.0</flyway.version>
+    <flyway.version>8.0.1</flyway.version>
     <postgres.version>42.2.24</postgres.version>
   </properties>
 
