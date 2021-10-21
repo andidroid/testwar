@@ -74,7 +74,10 @@
 
     <wildfly-datasources-galleon-pack.version>2.0.3.Final</wildfly-datasources-galleon-pack.version>
 
+    <wildfly-maven-plugin.version>2.1.0.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>6.0.0.Final</wildfly-jar-maven-plugin.version>
+    <windup-maven-plugin.version>5.2.0.Final</windup-maven-plugin.version>
+
     <jkube.version>1.4.0</jkube.version>
     <jib.version>3.1.4</jib.version>
     <flyway.version>8.0.1</flyway.version>
@@ -377,6 +380,16 @@
 
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>${wildfly-maven-plugin.version}</version>
+        <configuration>
+          <jboss-home>target/bootable-jar-build-artifacts/wildfly</jboss-home>
+        </configuration>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-jar-maven-plugin</artifactId>
         <version>${wildfly-jar-maven-plugin.version}</version>
         <configuration>
@@ -463,46 +476,54 @@
         </executions>
       -->
       </plugin>
-
-
-      <plugin>
-        <groupId>org.jboss.windup.plugin</groupId>
-        <artifactId>windup-maven-plugin</artifactId>
-        <version>5.2.0.Final</version>
-        <!--
-        <executions>
-            <execution>
-                <id>run-windup</id>
-                <phase>package</phase>
-                <goals>
-                    <goal>windup</goal>
-                </goals>
-            </execution>
-        </executions>
-         -->
-        <configuration>
-          <offlineMode>false</offlineMode>
-          <output>${project.build.directory}/windup-report</output>
-          <input>${project.basedir}</input>
-          <overwrite>true</overwrite>
-          <sourceMode>true</sourceMode>
-          <explodedApps>true</explodedApps>
-          <exportCSV>true</exportCSV>
-          <enableTattletale>true</enableTattletale>
-          <enableCompatibleFilesReport>true</enableCompatibleFilesReport>
-
-          <sourceTechnologies>
-            <sourceTechnology>jboss</sourceTechnology>
-          </sourceTechnologies>
-          <targetTechnologies>
-            <targetTechnology>eap:8</targetTechnology>
-          </targetTechnologies>
-        </configuration>
-      </plugin>
-
     </plugins>
   </build>
   <reporting>
     <plugins></plugins>
   </reporting>
+  <profiles>
+
+    <profile>
+      <id>windup</id>
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.jboss.windup.plugin</groupId>
+            <artifactId>windup-maven-plugin</artifactId>
+            <version>${windup-maven-plugin.version}</version>
+            <!--
+            <executions>
+                <execution>
+                    <id>run-windup</id>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>windup</goal>
+                    </goals>
+                </execution>
+            </executions>
+             -->
+            <configuration>
+              <offlineMode>false</offlineMode>
+              <output>${project.build.directory}/windup-report</output>
+              <input>${project.basedir}</input>
+              <overwrite>true</overwrite>
+              <sourceMode>true</sourceMode>
+              <explodedApps>true</explodedApps>
+              <exportCSV>true</exportCSV>
+              <enableTattletale>true</enableTattletale>
+              <enableCompatibleFilesReport>true</enableCompatibleFilesReport>
+
+              <sourceTechnologies>
+                <sourceTechnology>jboss</sourceTechnology>
+              </sourceTechnologies>
+              <targetTechnologies>
+                <targetTechnology>eap:8</targetTechnology>
+              </targetTechnologies>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
