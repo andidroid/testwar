@@ -66,7 +66,7 @@
     <mockito.version>4.0.0</mockito.version>
     <rest-assured.version>4.4.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.16.0</testcontainers.version>
+    <testcontainers.version>1.16.1</testcontainers.version>
     <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
 
 
@@ -78,7 +78,7 @@
     <jkube.version>1.4.0</jkube.version>
     <jib.version>3.1.4</jib.version>
     <flyway.version>8.0.1</flyway.version>
-    <postgres.version>42.2.24</postgres.version>
+    <postgres.version>42.3.0</postgres.version>
   </properties>
 
   <!-- External non standard repositories -->
