@@ -23,7 +23,9 @@ jobs:
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
       - name: Windup
-        run: mvn windup:windup -B -Pwindup -s settings.xml
+        run: |
+          export MAVEN_OPTS=--add-modules=java.se
+          mvn package -DskipTests=true -B -Pwindup -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: upload artifact
