@@ -32,6 +32,7 @@ public class MicroshedSharedContainerConfiguration implements SharedContainerCon
                         .withEnv("POSTGRESQL_HOST", "mypostgres").withEnv("POSTGRESQL_PORT", "5432")
                         .withEnv("POSTGRESQL_USER", "postgres").withEnv("POSTGRESQL_PASSWORD", "postgres")
                         .withEnv("POSTGRESQL_DATABASE", "test").withEnv("message", "Hello World from MicroShed Testing")
+                        .withEnv("JGROUPS_CLUSTER_PASSWORD", "test")
                         .withAppContextRoot("/testwar")
         // .withReadinessPath("/testwar/hello")
         ;
