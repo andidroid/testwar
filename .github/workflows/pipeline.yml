@@ -296,7 +296,9 @@ jobs:
           git add kubernetes.yml
           git commit -m "kubernetes.yml"
           git push
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
   docker_old:
     name: Docker old
     runs-on: ubuntu-latest
