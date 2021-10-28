@@ -13,7 +13,7 @@ import javax.ws.rs.core.Context;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-@Path("/")
+@Path("/hello")
 public class HelloResource
 {
     
