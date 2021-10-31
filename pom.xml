@@ -218,6 +218,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>io.smallrye</groupId>
+      <artifactId>smallrye-health-ui</artifactId>
+      <version>3.1.2</version>
+    </dependency>
+
   </dependencies>
 
   <build>
@@ -311,9 +317,15 @@
       <plugin>
         <artifactId>maven-failsafe-plugin</artifactId>
         <configuration>
+          <!--
           <includes>
             <include>*/*IT.java</include>
           </includes>
+        -->
+          <!-- include tags -->
+          <groups>MicroShedTest</groups>
+          <!-- exclude tags -->
+          <excludedGroups>IntegrationTest</excludedGroups>
         </configuration>
         <executions>
           <execution>

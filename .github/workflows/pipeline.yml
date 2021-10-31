@@ -87,7 +87,7 @@ jobs:
           key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Run Integration Tests
-        run: mvn -B verify
+        run: mvn -B verify -Dgroups="MicroShedTest" -DexcludedGroups="IntegrationTest,SmokeTest,LoadTest"
 
   flyway:
     name: Flyway Database Migration Test
@@ -298,7 +298,7 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        
+
   docker_old:
     name: Docker old
     runs-on: ubuntu-latest
