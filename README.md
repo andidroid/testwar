@@ -2,6 +2,14 @@
 
 mvn dependency:resolve
 
+
+java -jar testhollowjar.jar --install-dir=wildfly --deployment=testwar.war
+
+
+
+
+
+
 docker run -e POSTGRES_PASSWORD=postgres -p 5432:15432 postgres:13
 
 mvn flyway:info

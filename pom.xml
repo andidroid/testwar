@@ -78,6 +78,13 @@
     <wildfly-jar-maven-plugin.version>6.0.0.Final</wildfly-jar-maven-plugin.version>
     <windup-maven-plugin.version>5.2.0.Final</windup-maven-plugin.version>
 
+    <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
+    <arquillian-wildfly.version>4.0.0.Alpha3</arquillian-wildfly.version>
+    <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
+    <arquillian.version>1.7.0.Alpha10 </arquillian.version>
+    <shrinkwrap.version>1.2.6</shrinkwrap.version>
+
+
     <jkube.version>1.5.1</jkube.version>
     <jib.version>3.1.4</jib.version>
     <flyway.version>8.0.2</flyway.version>
@@ -123,10 +130,51 @@
         <version>${postgres.version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.jboss.arquillian.test</groupId>
+        <artifactId>arquillian-test-api</artifactId>
+        <version>${arquillian.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.junit5</groupId>
+        <artifactId>arquillian-junit5-core</artifactId>
+        <version>${arquillian.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.wildfly.arquillian</groupId>
+        <artifactId>wildfly-arquillian-container-managed</artifactId>
+        <version>${arquillian-wildfly.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.wildfly.arquillian</groupId>
+        <artifactId>wildfly-arquillian-container-bootable</artifactId>
+        <version>${arquillian-wildfly.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.jboss.arquillian.junit5</groupId>
+        <artifactId>arquillian-junit5-container</artifactId>
+        <version>${arquillian.version}</version>
+        <scope>test</scope>
+      </dependency>
 
     </dependencies>
   </dependencyManagement>
   <dependencies>
+
+
+    <dependency>
+      <groupId>org.jboss.arquillian.test</groupId>
+      <artifactId>arquillian-test-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.jboss.arquillian.junit5</groupId>
+      <artifactId>arquillian-junit5-container</artifactId>
+    </dependency>
+
 
     <dependency>
       <groupId>org.eclipse.microprofile</groupId>
@@ -314,28 +362,7 @@
           </includes>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>maven-failsafe-plugin</artifactId>
-        <configuration>
-          <!--
-          <includes>
-            <include>*/*IT.java</include>
-          </includes>
-        -->
-          <!-- include tags -->
-          <groups>MicroShedTest</groups>
-          <!-- exclude tags -->
-          <excludedGroups>IntegrationTest</excludedGroups>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
+
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
         <executions>
@@ -533,6 +560,99 @@
                 <targetTechnology>eap:8</targetTechnology>
               </targetTechnologies>
             </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>integration-test</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <configuration>
+              <!--
+              <includes>
+                <include>*/*IT.java</include>
+              </includes>
+            -->
+              <!-- include tags -->
+              <groups>MicroShedTest</groups>
+              <!-- exclude tags -->
+              <excludedGroups>IntegrationTest</excludedGroups>
+            </configuration>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>arquillian-test</id>
+      <dependencies>
+
+        <dependency>
+          <groupId>org.wildfly.arquillian</groupId>
+          <artifactId>wildfly-arquillian-container-managed</artifactId>
+        </dependency>
+        <!--
+    <dependency>
+      <groupId>org.wildfly.arquillian</groupId>
+      <artifactId>wildfly-arquillian-container-bootable</artifactId>
+    </dependency>
+ -->
+        <dependency>
+          <groupId>org.jboss.arquillian.junit5</groupId>
+          <artifactId>arquillian-junit5-core</artifactId>
+        </dependency>
+        <dependency>
+          <groupId>org.jboss.arquillian.junit5</groupId>
+          <artifactId>arquillian-junit5-container</artifactId>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-failsafe-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>jaxrs.surefire</id>
+                <goals>
+                  <goal>integration-test</goal>
+                  <goal>verify</goal>
+
+                </goals>
+                <configuration>
+                  <includes>
+                    <include>*/*IT.java</include>
+                  </includes>
+                  <!-- -->
+                  <groups>ArquillianTest</groups>
+                  <!-- exclude tags -->
+                  <excludedGroups>IntegrationTest,MicroShedTest</excludedGroups>
+                  <failIfNoTests>true</failIfNoTests>
+                  <systemPropertyVariables>
+                    <bootable.jar>${project.build.directory}/testhollowjar.jar</bootable.jar>
+                    <arquillian.xml>arquillian.xml</arquillian.xml>
+                    <arquillian.launch>wildfly-managed</arquillian.launch>
+                    <!-- <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager> -->
+                  </systemPropertyVariables>
+                  <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                </configuration>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
