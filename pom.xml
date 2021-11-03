@@ -7,7 +7,7 @@
     <version>0.0.25</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.1.4-SNAPSHOT</version>
+  <version>0.1.5-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -70,7 +70,7 @@
     <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
 
 
-    <wildfly.version>25.0.0.Final</wildfly.version>
+    <wildfly.version>25.0.1.Final</wildfly.version>
 
     <wildfly-datasources-galleon-pack.version>2.0.3.Final</wildfly-datasources-galleon-pack.version>
 
