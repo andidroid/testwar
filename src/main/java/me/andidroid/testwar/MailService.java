@@ -25,7 +25,7 @@ public class MailService
     
     @Inject
     @Email
-    @ConfigProperty(name = "test.mail", defaultValue = "test@andidroid.io")
+    @ConfigProperty(name = "test.mail")
     private String mail;
     
     public MailService()
