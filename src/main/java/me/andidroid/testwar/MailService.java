@@ -25,7 +25,7 @@ public class MailService
     
     @Inject
     @Email
-    @ConfigProperty(name = "test.mail")
+    @ConfigProperty(name = "MAIL_UESERNAME", defaultValue = "abutest693@gmail.com")
     private String mail;
     
     public MailService()
@@ -60,6 +60,8 @@ public class MailService
     
     public void sendMail(String subject, String message) throws MessagingException
     {
+        System.out.println("try send message " + subject + " to " + mail);
+        
         MimeMessage m = new MimeMessage(mailSession);
         Address from = new InternetAddress(mail);
         Address[] to = new InternetAddress[]{new InternetAddress(mail) };
@@ -70,7 +72,7 @@ public class MailService
         m.setContent(message, "text/plain");
         Transport.send(m);
         
-        System.out.println("send message " + subject + " to " + mail);
+        System.out.println("success: send message " + subject + " to " + mail);
     }
     
     public void destroy(@Observes

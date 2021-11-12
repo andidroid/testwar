@@ -6,7 +6,7 @@ mvn dependency:resolve
 java -jar testhollowjar.jar --install-dir=wildfly --deployment=testwar.war
 
 
-
+mvn -B verify -Dgroups="MicroShedTest" -DexcludedGroups="IntegrationTest,SmokeTest,LoadTest"
 
 
 
