@@ -20,7 +20,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 @ApplicationScoped
 public class MailService
 {
-    @Resource(mappedName = "java:jboss/mail/Default")
+    // @Resource(mappedName = "java:jboss/mail/Default")
     private Session mailSession;
     
     @Inject
@@ -39,24 +39,24 @@ public class MailService
         this.mail = mail;
     }
     
-    public void init(@Observes
-    @Initialized(ApplicationScoped.class)
-    Object init)
-    {
-        System.out.println("### server ApplicationScoped ready");
-        try
-        {
-            String subject = "testwar started";
-            String message = "Application testwar started.\n\nMail sent from WildFly";
-            
-            sendMail(subject, message);
-        }
-        catch(MessagingException e)
-        {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
+    // public void init(@Observes
+    // @Initialized(ApplicationScoped.class)
+    // Object init)
+    // {
+    // System.out.println("### server ApplicationScoped ready");
+    // try
+    // {
+    // String subject = "testwar started";
+    // String message = "Application testwar started.\n\nMail sent from WildFly";
+    
+    // sendMail(subject, message);
+    // }
+    // catch(MessagingException e)
+    // {
+    // // TODO Auto-generated catch block
+    // e.printStackTrace();
+    // }
+    // }
     
     public void sendMail(String subject, String message) throws MessagingException
     {

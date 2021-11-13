@@ -3,6 +3,7 @@ package me.andidroid.testwar;
 import org.microshed.testing.SharedContainerConfiguration;
 import org.microshed.testing.testcontainers.ApplicationContainer;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.MockServerContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.containers.output.Slf4jLogConsumer;
@@ -27,15 +28,21 @@ public class MicroshedSharedContainerConfiguration implements SharedContainerCon
         public static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:14.0-alpine") // "postgres:latest"
                         .withNetworkAliases("mypostgres").withExposedPorts(5432).withUsername("postgres").withPassword("postgres").withInitScript("database/import.sql") // inside
                         // src/test/resources
-                        .withReuse(true).withDatabaseName("test");
+                        // .withReuse(true).
+                        .withDatabaseName("test");
         
         // @Container
         // public static MockServerContainer mockServer = new MockServerContainer().withNetworkAliases("mockserver");
         
+        // @Container
+        // public static GenericContainer greenMailContainer = new GenericContainer<>(DockerImageName.parse("greenmail/standalone:1.6.5")).waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1)).withNetworkAliases("mygreenmail")
+        // .withEnv("GREENMAIL_OPTS", "-Dgreenmail.setup.test.smtps -Dgreenmail.setup.test.api -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=abutest693@gmail.com:test").withLogConsumer(new Slf4jLogConsumer(LOGGER))
+        // // .withReuse(true)
+        // .withExposedPorts(3465);// 8080
+        
+        // DockerImageName.parse("confluentinc/cp-kafka:latest")
         @Container
-        public static GenericContainer greenMailContainer = new GenericContainer<>(DockerImageName.parse("greenmail/standalone:1.6.5")).waitingFor(Wait.forLogMessage(".*Starting GreenMail standalone.*", 1)).withNetworkAliases("mygreenmail")
-                        .withEnv("GREENMAIL_OPTS", "-Dgreenmail.setup.test.smtps -Dgreenmail.setup.test.api -Dgreenmail.hostname=0.0.0.0 -Dgreenmail.users=abutest693@gmail.com:test").withLogConsumer(new Slf4jLogConsumer(LOGGER)).withReuse(true)
-                        .withExposedPorts(3465);// 8080
+        public static KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:latest")).withNetworkAliases("mykafka");
         
         @Container
         public static ApplicationContainer app = new ApplicationContainer()
@@ -46,10 +53,12 @@ public class MicroshedSharedContainerConfiguration implements SharedContainerCon
                         .withEnv("JGROUPS_CLUSTER_PASSWORD", "test")
                         // mail
                         .withEnv("MAIL_USERNAME", "abutest693@gmail.com").withEnv("MAIL_PASSWORD", "test").withEnv("test.mail", "abutest693@gmail.com").withEnv("MAIL_HOST", "mygreenmail").withEnv("MAIL_PORT", "3465")
+                        // kafka mp.messaging.connector.smallrye-kafka.bootstrap.servers
+                        .withEnv("MP_MESSAGING_CONNECTOR_SMALLRYE_KAFKA_BOOTSTRAP_SERVERS", "mykafka:9092")
                         // readiness
                         .withReadinessPath("/testservice/hello/hello")
                         // other containers
-                        .dependsOn(postgres, greenMailContainer);
+                        .dependsOn(postgres, /* greenMailContainer, */ kafkaContainer);
         // .withAppContextRoot("/testwar")
         ;
         // .withMpRestClient(QuoteRestClient.class,"http://mockserver:"+MockServerContainer.PORT);
@@ -64,7 +73,7 @@ public class MicroshedSharedContainerConfiguration implements SharedContainerCon
                 Flyway flyway = Flyway.configure().dataSource("jdbc:tc:postgres:14.0-alpine://mypostgres:5432/test", "postgres", "postgres").load();
                 MigrateResult result = flyway.migrate();
                 
-                greenMailContainer.start();
+                // greenMailContainer.start();
                 
                 System.out.println("flyway migrated " + result.migrationsExecuted + " to " + result.targetSchemaVersion);
                 app.start();

@@ -2,6 +2,7 @@ package me.andidroid.testwar;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.microshed.testing.jaxrs.RESTClient;
 import org.microshed.testing.jupiter.MicroShedTest;
@@ -18,6 +19,7 @@ import io.restassured.response.Response;
 import static org.hamcrest.Matchers.containsString;
 import static io.restassured.http.ContentType.TEXT;
 
+@Disabled
 @Tag("MicroShedTest")
 @MicroShedTest
 @SharedContainerConfig(MicroshedSharedContainerConfiguration.class)
@@ -28,8 +30,8 @@ public class MailServiceMIT
     public void testGetMail()
     {
         
-        String host = MicroshedSharedContainerConfiguration.greenMailContainer.getHost();
-        System.out.println(host);
+        // String host = MicroshedSharedContainerConfiguration.greenMailContainer.getHost();
+        // System.out.println(host);
         // SMTPS : 3465, api : 8080
         // Integer port = MicroshedSharedContainerConfiguration.greenMailContainer.getMappedPort(8080);
         // System.out.println(port);

@@ -3,6 +3,7 @@ package me.andidroid.testwar;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Tag;
 import org.microshed.testing.jaxrs.RESTClient;
 import org.microshed.testing.jupiter.MicroShedTest;
@@ -28,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+@Disabled
 @Tag("IntegrationTest")
 public class MailServiceIT
 {
