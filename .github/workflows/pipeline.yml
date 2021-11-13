@@ -89,6 +89,32 @@ jobs:
       - name: Run Integration Tests
         run: mvn -B verify -Dgroups="MicroShedTest" -DexcludedGroups="IntegrationTest,SmokeTest,LoadTest"
 
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: testwar-artifact
+          path: testwar.war
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: "11"
+          distribution: "adopt"
+          server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+          settings-path: ${{ github.workspace }} # location for the settings.xml file
+      - name: Publish package
+        run: mvn deploy:deploy-file -Dfile=testwar.war -s settings.xml -Durl=https://maven.pkg.github.com/andidroid/testwar -DpomFile=pom.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   flyway:
     name: Flyway Database Migration Test
     needs: build
@@ -220,7 +246,9 @@ jobs:
           key: ${{ runner.os }}-m2-${{ env.cache-name }}-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Site Generation
-        run: mvn -B site site:stage
+        run: mvn -B site site:stage -s settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: site-artifact
@@ -273,29 +301,6 @@ jobs:
           settings-path: ${{ github.workspace }}
       - name: Publish to GitHub Container Registry
         run: mvn package jib:build -Djib.to.image=ghcr.io/andidroid/testwar -Djib.from.image=ghcr.io/andidroid/testhollowjar:latest -DskipTests=true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Build Kubernetes Resources
-        run: mvn k8s:resource -Djkube.offline=true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Checkout GitOps Repo
-        uses: actions/checkout@v2
-        with:
-          repository: andidroid/testwargitops
-          path: testwargitops
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Copy Kubernetes Resources
-        run: cp target/classes/META-INF/jkube/kubernetes.yml testwargitops/kubernetes.yml
-      - name: Copy Kubernetes Resources
-        run: |
-          cd testwargitops
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add kubernetes.yml
-          git commit -m "kubernetes.yml"
-          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
