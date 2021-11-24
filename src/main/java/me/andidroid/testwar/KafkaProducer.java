@@ -12,7 +12,8 @@ public class KafkaProducer
      */
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(KafkaProducer.class);
     
-    @Incoming("entitymessage")
+    // @Merge
+    @Incoming("entity-messages")
     @Outgoing("kafka-messages")
     public Message<String> process(Message<String> m)
     {

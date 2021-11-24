@@ -25,7 +25,7 @@ public class MessagingEntityListener
     private String enabled;
     
     @Inject
-    @Channel("entitymessage")
+    @Channel("entity-messages")
     @OnOverflow(value = OnOverflow.Strategy.BUFFER, bufferSize = 300)
     private Emitter<String> emitter;
     

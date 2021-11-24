@@ -63,13 +63,7 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
 
-    <mockito.version>4.0.0</mockito.version>
-    <rest-assured.version>4.4.0</rest-assured.version>
-    <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.16.2</testcontainers.version>
-    <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
-    <greenmail.version>1.6.5</greenmail.version>
-    <awaitility.version>4.1.1</awaitility.version>
+    <testhollowjar.version>0.1.7-SNAPSHOT</testhollowjar.version>
 
     <wildfly.version>25.0.1.Final</wildfly.version>
 
@@ -81,17 +75,26 @@
 
     <kafka.version>2.8.1</kafka.version>
 
+    <jkube.version>1.5.1</jkube.version>
+    <jib.version>3.1.4</jib.version>
+    <flyway.version>8.0.4</flyway.version>
+    <postgres.version>42.3.1</postgres.version>
+
+
+    <mockito.version>4.0.0</mockito.version>
+    <rest-assured.version>4.4.0</rest-assured.version>
+    <microshed.version>0.9.1</microshed.version>
+    <testcontainers.version>1.16.2</testcontainers.version>
+    <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
+    <greenmail.version>1.6.5</greenmail.version>
+    <awaitility.version>4.1.1</awaitility.version>
+
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>4.0.0.Alpha3</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
     <arquillian.version>1.7.0.Alpha10 </arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
 
-
-    <jkube.version>1.5.1</jkube.version>
-    <jib.version>3.1.4</jib.version>
-    <flyway.version>8.0.4</flyway.version>
-    <postgres.version>42.3.1</postgres.version>
   </properties>
 
   <!-- External non standard repositories -->
@@ -205,6 +208,12 @@
       <groupId>io.smallrye.reactive</groupId>
       <artifactId>smallrye-reactive-messaging-kafka-api</artifactId>
       <scope>provided</scope>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-streams</artifactId>
     </dependency>
 
     <dependency>
@@ -483,6 +492,62 @@
         </executions>
       </plugin>
 
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <configuration>
+          <artifactItems>
+            <artifactItem>
+              <groupId>me.andidroid</groupId>
+              <artifactId>testhollowjar</artifactId>
+              <version>${testhollowjar.version}</version>
+              <overWrite>true</overWrite>
+              <outputDirectory>target</outputDirectory>
+              <destFileName>testhollowjar.jar</destFileName>
+            </artifactItem>
+          </artifactItems>
+        </configuration>
+        <executions>
+          <execution>
+            <id>copy</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>me.andidroid</groupId>
+                  <artifactId>testhollowjar</artifactId>
+                  <version>${testhollowjar.version}</version>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>target</outputDirectory>
+                  <destFileName>testhollowjar.jar</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+          <execution>
+            <id>unpack</id>
+            <phase>package</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>me.andidroid</groupId>
+                  <artifactId>testhollowjar</artifactId>
+                  <version>0.1.7-SNAPSHOT</version>
+                  <overWrite>true</overWrite>
+                  <outputDirectory>target/test</outputDirectory>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
         <artifactId>wildfly-maven-plugin</artifactId>
@@ -490,6 +555,33 @@
         <configuration>
           <jboss-home>target/bootable-jar-build-artifacts/wildfly</jboss-home>
         </configuration>
+        <executions>
+          <!-- Undeploy the application on clean -->
+          <execution>
+            <id>undeploy</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>undeploy</goal>
+            </goals>
+            <configuration>
+              <ignoreMissingDeployment>true</ignoreMissingDeployment>
+            </configuration>
+          </execution>
+
+          <!-- Deploy the JDBC library -->
+          <execution>
+            <id>deploy-driver</id>
+            <phase>install</phase>
+            <configuration>
+              <groupId>postgresql</groupId>
+              <artifactId>postgresql</artifactId>
+              <name>postgresql.jar</name>
+            </configuration>
+            <goals>
+              <goal>deploy-artifact</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
 
