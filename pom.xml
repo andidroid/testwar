@@ -567,33 +567,6 @@
         <configuration>
           <jboss-home>target/bootable-jar-build-artifacts/wildfly</jboss-home>
         </configuration>
-        <executions>
-          <!-- Undeploy the application on clean -->
-          <execution>
-            <id>undeploy</id>
-            <phase>clean</phase>
-            <goals>
-              <goal>undeploy</goal>
-            </goals>
-            <configuration>
-              <ignoreMissingDeployment>true</ignoreMissingDeployment>
-            </configuration>
-          </execution>
-
-          <!-- Deploy the JDBC library -->
-          <execution>
-            <id>deploy-driver</id>
-            <phase>install</phase>
-            <configuration>
-              <groupId>postgresql</groupId>
-              <artifactId>postgresql</artifactId>
-              <name>postgresql.jar</name>
-            </configuration>
-            <goals>
-              <goal>deploy-artifact</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
 
