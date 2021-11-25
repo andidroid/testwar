@@ -139,13 +139,13 @@
         <artifactId>kafka-streams</artifactId>
         <version>${kafka.version}</version>
       </dependency>
-
+<!--
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
         <scope>provided</scope>
       </dependency>
-
+-->
 
       <dependency>
         <groupId>io.rest-assured</groupId>
