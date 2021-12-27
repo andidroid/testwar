@@ -5,8 +5,8 @@ import jakarta.annotation.PreDestroy;
 import jakarta.annotation.Resource;
 import jakarta.inject.Inject;
 import jakarta.jms.JMSContext;
-import jakarta.jms.JMSProducer;
-import jakarta.jms.Queue;
+import jakarta.jms.JMSProducer;<<<<<<<HEAD
+import jakarta.jms.Queue;=======>>>>>>>b381ca1(jms test entity messaging to topic)
 import jakarta.jms.TextMessage;
 import jakarta.jms.Topic;
 import jakarta.json.Json;
@@ -109,12 +109,10 @@ public class MessagingEntityListener {
                 message.setStringProperty("applicationName", moduleKey);
                 message.setStringProperty("title", resource);
                 message.setStringProperty("topic", "topic");
-
                 JMSProducer producer = this.context.createProducer();
                 producer.setTimeToLive(EXPIRATION_TIME);
                 producer.setAsync(new AsyncMessageCompletionListener());
                 producer.send(this.topic, message);
-
             }
         } catch (Exception e) {
             LOGGER.error("error sending async message to sse bradcaster", e);
