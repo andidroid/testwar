@@ -14,16 +14,19 @@ import jakarta.ws.rs.core.MediaType;
 
 @Path("/test")
 @Traced
-public class TestResource {
-
+public class TestResource
+{
+    
     @Inject
     private TestService testService;
-
+    
     @GET
     @Path("/{id}")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Response getById(@PathParam(value = "id") String id) {
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+    // @Consumes(MediaType.APPLICATION_JSON)
+    public Response getById(@PathParam(value = "id")
+    String id)
+    {
         return Response.ok(testService.getById(Long.parseLong(id))).build();
     }
 }

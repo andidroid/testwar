@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "test", schema = "public")
-@EntityListeners(MessagingEntityListener.class)
+@EntityListeners({MessagingEntityListener.class, LoggingEntityListener.class })
 public class Test
 {
     
@@ -63,7 +63,7 @@ public class Test
     public String toString()
     {
         // TODO Auto-generated method stub
-        return super.toString();
+        return "Test." + getId();
     }
     
 }

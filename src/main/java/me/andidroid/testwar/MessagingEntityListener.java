@@ -2,19 +2,26 @@ package me.andidroid.testwar;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import jakarta.annotation.Resource;
 import jakarta.inject.Inject;
+import jakarta.jms.JMSContext;
+import jakarta.jms.JMSProducer;
+import jakarta.jms.TextMessage;
+import jakarta.jms.Topic;
+import jakarta.json.Json;
 import jakarta.persistence.PostLoad;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.PostRemove;
 import jakarta.persistence.PostUpdate;
+import jakarta.persistence.Table;
+import java.util.UUID;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.reactive.messaging.Channel;
-import org.eclipse.microprofile.reactive.messaging.Emitter;
-import org.eclipse.microprofile.reactive.messaging.OnOverflow;
 
 public class MessagingEntityListener
 {
+    public static final int EXPIRATION_TIME = 5000;
+    
     /**
      * Logging via slf4j api
      */
@@ -25,9 +32,11 @@ public class MessagingEntityListener
     private String enabled;
     
     @Inject
-    @Channel("entity-messages")
-    @OnOverflow(value = OnOverflow.Strategy.BUFFER, bufferSize = 300)
-    private Emitter<String> emitter;
+    // @JMSConnectionFactory("java:/JmsXA") // define own jms connection factory, default is java:/ConnectionFactory
+    private JMSContext context;
+    
+    @Resource(lookup = "java:global/remoteContext/TestTopic")
+    private Topic topic;
     
     /**
      *
@@ -76,7 +85,24 @@ public class MessagingEntityListener
         {
             if(Boolean.valueOf(this.enabled))
             {
-                emitter.send(name + "-" + obj);
+                Table tableAnnotation = obj.getClass().getAnnotation(Table.class);
+                String moduleKey = tableAnnotation.schema();
+                String resource = tableAnnotation.name();
+                String json = Json.createObjectBuilder().add("event", name).add("moduleKey", moduleKey).add("entity", obj.getClass().getSimpleName()).add("resource", resource).add("id", obj.toString()).build().toString();
+                
+                TextMessage message = this.context.createTextMessage();
+                message.setJMSCorrelationID(UUID.randomUUID().toString());
+                message.setStringProperty("sender", "test");
+                message.setJMSExpiration(EXPIRATION_TIME);
+                message.setText(json);
+                message.setStringProperty("applicationName", moduleKey);
+                message.setStringProperty("title", resource);
+                message.setStringProperty("topic", "topic");
+                
+                JMSProducer producer = this.context.createProducer();
+                producer.setTimeToLive(EXPIRATION_TIME);
+                producer.setAsync(new AsyncMessageCompletionListener());
+                producer.send(this.topic, message);
             }
         }
         catch(Exception e)
