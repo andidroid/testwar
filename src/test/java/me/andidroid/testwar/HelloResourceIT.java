@@ -13,11 +13,11 @@ import static io.restassured.http.ContentType.TEXT;
 public class HelloResourceIT
 {
     
-    // @Test
+    @Test
     public void testHello()
     {
         
-        given().when().get("testservice/hello/hello").then().statusCode(200).body(containsString("Hello!"));
+        given().when().get("testwar/testservice/hello/hello").then().statusCode(200).body(containsString("Hello!"));
         
         /*
          * String response =

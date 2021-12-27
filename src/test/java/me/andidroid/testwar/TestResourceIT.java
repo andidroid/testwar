@@ -12,7 +12,7 @@ import org.testcontainers.junit.jupiter.Container;
 import static io.restassured.RestAssured.given;
 import io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.containsString;
-import static io.restassured.http.ContentType.TEXT;
+import static io.restassured.http.ContentType.JSON;
 
 @Tag("IntegrationTest")
 public class TestResourceIT
@@ -22,7 +22,7 @@ public class TestResourceIT
     public void testGetById()
     {
         
-        me.andidroid.testwar.Test test = given().when().get("/testservice/hello/test").then().statusCode(200).contentType(TEXT).extract().as(me.andidroid.testwar.Test.class);
+        me.andidroid.testwar.Test test = given().accept("application/json").get("testwar/testservice/test/1").then().statusCode(200).contentType("application/json").extract().as(me.andidroid.testwar.Test.class);
         
         Assertions.assertEquals(1l, test.getId());
         Assertions.assertEquals("Test 1", test.getText());
