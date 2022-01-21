@@ -5,8 +5,8 @@ import jakarta.annotation.PreDestroy;
 import jakarta.annotation.Resource;
 import jakarta.inject.Inject;
 import jakarta.jms.JMSContext;
-import jakarta.jms.JMSProducer;<<<<<<<HEAD
-import jakarta.jms.Queue;=======>>>>>>>b381ca1(jms test entity messaging to topic)
+import jakarta.jms.JMSProducer;
+import jakarta.jms.Queue;
 import jakarta.jms.TextMessage;
 import jakarta.jms.Topic;
 import jakarta.json.Json;
@@ -42,7 +42,6 @@ public class MessagingEntityListener {
     // @JMSConnectionFactory("java:/JmsXA") // define own jms connection factory,
     // default is java:/ConnectionFactory
     private JMSContext context;
-
     // @Resource(lookup = "java:global/remoteContext/TestTopic")
     // private Topic topic;
 

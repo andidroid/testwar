@@ -27,6 +27,15 @@ public class TestResource {
     }
 
     @GET
+    @Path("/all")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
+    // @Consumes(MediaType.APPLICATION_JSON)
+    public Response getAll()
+    {
+        return Response.ok(testService.getAll()).build();
+    }
+    
+    @GET
     @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
     // @Consumes(MediaType.APPLICATION_JSON)
