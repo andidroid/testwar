@@ -35,8 +35,11 @@ public class MessagingEntityListener
     // @JMSConnectionFactory("java:/JmsXA") // define own jms connection factory, default is java:/ConnectionFactory
     private JMSContext context;
     
-    @Resource(lookup = "java:global/remoteContext/TestTopic")
-    private Topic topic;
+    // @Resource(lookup = "java:global/remoteContext/TestTopic")
+    // private Topic topic;
+
+    @Resource(lookup = "java:global/remoteContext/TestQueue")
+    private Queue topic;
     
     /**
      *
@@ -46,7 +49,7 @@ public class MessagingEntityListener
     {
         LOGGER.info("MessagingEntityListener.initialize()");
     }
-    
+
     @Override
     @PreDestroy
     public void finalize()
