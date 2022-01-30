@@ -53,7 +53,7 @@
 
   <properties>
     <enforcer.skip>true</enforcer.skip>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <javaee.version>8.0.0</javaee.version>
     <microprofile.version>4.1</microprofile.version>
 
