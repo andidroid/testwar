@@ -1,6 +1,12 @@
 name: Java CI Pipeline
 
-on: [push]
+on:
+  push:
+    branches:
+      - 'master'
+      - 'feature/**'
+      - 'releases/**'
+  workflow_dispatch:
 
 jobs:
   build:
