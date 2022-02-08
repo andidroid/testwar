@@ -4,7 +4,7 @@
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>0.0.27</version>
+    <version>0.0.31</version>
   </parent>
   <artifactId>testwar</artifactId>
   <version>0.2.1-SNAPSHOT</version>
@@ -74,14 +74,14 @@
 
     <jkube.version>1.5.1</jkube.version>
     <jib.version>3.1.4</jib.version>
-    <flyway.version>8.2.0</flyway.version>
-    <postgres.version>42.3.1</postgres.version>
+    <flyway.version>8.4.4</flyway.version>
+    <postgres.version>42.3.2</postgres.version>
 
 
     <mockito.version>4.1.0</mockito.version>
     <rest-assured.version>4.4.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.16.2</testcontainers.version>
+    <testcontainers.version>1.16.3</testcontainers.version>
     <mockserver-client-java.version>5.11.2</mockserver-client-java.version>
     <greenmail.version>1.6.5</greenmail.version>
     <awaitility.version>4.1.1</awaitility.version>
