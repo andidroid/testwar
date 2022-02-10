@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -53,7 +53,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -81,7 +81,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -113,7 +113,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Publish package
@@ -147,7 +147,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -176,7 +176,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -205,7 +205,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
       - name: Cache SonarCloud packages
         uses: actions/cache@v2
         env:
@@ -240,7 +240,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -271,7 +271,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: "17"
-          distribution: "adopt"
+          distribution: "temurin"
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Cache Maven packages
@@ -301,8 +301,8 @@ jobs:
       - name: Set up JDK 17 for deploy to GitHub Container Registry
         uses: actions/setup-java@v2
         with:
-          distribution: "adopt"
           java-version: "17"
+          distribution: "temurin"
           server-id: ghcr.io
           settings-path: ${{ github.workspace }}
       - name: Publish to GitHub Container Registry
