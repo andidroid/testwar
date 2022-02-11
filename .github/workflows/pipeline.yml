@@ -263,7 +263,11 @@ jobs:
         run: |
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          mvn -B scm-publish:publish-scm -s $GITHUB_WORKSPACE/settings.xml
+          mvn -B scm-publish:publish-scm -s $GITHUB_WORKSPACE/settings.xml -Dscmpublish.skipCheckin=true
+          cd target/scmpublish-checkout
+          git add .
+          git commit -m"update github pages with maven site"
+          git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
