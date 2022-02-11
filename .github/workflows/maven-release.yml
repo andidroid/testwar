@@ -35,12 +35,12 @@ jobs:
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
-          mvn release:prepare -B -DautoVersionSubmodules=true -DskipTests=true -s $GITHUB_WORKSPACE/settings.xml
+          mvn release:prepare -B -DautoVersionSubmodules=true -Dmaven.test.skip=true -s $GITHUB_WORKSPACE/settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn release:perform -B -DskipTests=true -s settings.xml
+        run: mvn release:perform -B -Dmaven.test.skip=true -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -88,6 +88,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish to GitHub Container Registry
-        run: mvn jib:build -Djib.to.image=ghcr.io/andidroid/testwar -Djib.from.image=ghcr.io/andidroid/testhollowjar:${{ env.TESTHOLLOWJAR_VERSION }} -DskipTests=true -f /home/runner/work/testwar/testwar/target/checkout/pom.xml
+        run: mvn jib:build -Djib.to.image=ghcr.io/andidroid/testwar -Djib.from.image=ghcr.io/andidroid/testhollowjar:${{ env.TESTHOLLOWJAR_VERSION }} -f /home/runner/work/testwar/testwar/target/checkout/pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
