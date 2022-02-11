@@ -4,10 +4,10 @@
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>0.0.31</version>
+    <version>0.0.33</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.2.1-SNAPSHOT</version>
+  <version>0.3.3-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -53,7 +53,7 @@
 
   <properties>
     <enforcer.skip>true</enforcer.skip>
-    <java.version>11</java.version>
+    <java.version>17</java.version>
     <javaee.version>8.0.0</javaee.version>
     <microprofile.version>4.1</microprofile.version>
 
@@ -134,6 +134,13 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
+
+      <dependency>
+        <groupId>me.andidroid</groupId>
+        <artifactId>testhollowjar</artifactId>
+        <version>${testhollowjar.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>org.apache.kafka</groupId>
         <artifactId>kafka-streams</artifactId>
@@ -191,8 +198,6 @@
         <version>${arquillian.version}</version>
         <scope>test</scope>
       </dependency>
-
-
     </dependencies>
   </dependencyManagement>
   <dependencies>
@@ -578,7 +583,7 @@
             <!--
             <layer>remote-activemq</layer>
             -->
-            <!---->
+            
             <layer>postgresql-datasource</layer>
 
             <layer>web-console</layer>
@@ -616,7 +621,7 @@
           <containerizingMode>packaged</containerizingMode>
           -->
           <from>
-            <image>andidroid/testhollowjar:latest</image>
+            <image>andidroid/testhollowjar:${testhollowjar.version}</image>
           </from>
 
 
@@ -648,7 +653,7 @@
     </plugins>
   </build>
   <reporting>
-    <plugins></plugins>
+    <plugins />
   </reporting>
   <profiles>
 
@@ -705,6 +710,7 @@
           <plugin>
             <artifactId>maven-failsafe-plugin</artifactId>
             <configuration>
+              <skipITs>true</skipITs>
               <!--
               <includes>
                 <include>*/*IT.java</include>
