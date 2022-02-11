@@ -7,7 +7,7 @@
     <version>0.0.33</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
+  <version>0.3.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -583,7 +583,7 @@
             <!--
             <layer>remote-activemq</layer>
             -->
-            <!---->
+            
             <layer>postgresql-datasource</layer>
 
             <layer>web-console</layer>
@@ -653,7 +653,7 @@
     </plugins>
   </build>
   <reporting>
-    <plugins></plugins>
+    <plugins />
   </reporting>
   <profiles>
 
