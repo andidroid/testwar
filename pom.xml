@@ -7,7 +7,7 @@
     <version>0.0.33</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.3.0-SNAPSHOT</version>
+  <version>0.3.0</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -28,7 +28,7 @@
     <connection>scm:git:https://github.com/andidroid/testwar.git</connection>
     <developerConnection>scm:git:https://github.com/andidroid/testwar.git</developerConnection>
     <url>https://github.com/andidroid/testwar.git</url>
-    <tag>HEAD</tag>
+    <tag>v0.3.0</tag>
   </scm>
 
   <distributionManagement>
@@ -583,7 +583,7 @@
             <!--
             <layer>remote-activemq</layer>
             -->
-            <!---->
+            
             <layer>postgresql-datasource</layer>
 
             <layer>web-console</layer>
@@ -653,7 +653,7 @@
     </plugins>
   </build>
   <reporting>
-    <plugins></plugins>
+    <plugins />
   </reporting>
   <profiles>
 
