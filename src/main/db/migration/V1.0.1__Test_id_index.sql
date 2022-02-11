@@ -1,1 +1,0 @@
-create unique index test_id on test (id)
