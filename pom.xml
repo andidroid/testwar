@@ -710,6 +710,7 @@
           <plugin>
             <artifactId>maven-failsafe-plugin</artifactId>
             <configuration>
+              <skipITs>true</skipITs>
               <!--
               <includes>
                 <include>*/*IT.java</include>
