@@ -120,7 +120,8 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
       - name: Publish package
-        run: mvn deploy:deploy-file -Dfile=testwar.war -s settings.xml -Durl=https://maven.pkg.github.com/andidroid/testwar -DpomFile=pom.xml
+        run: mvn deploy -DskipTests=true -s settings.xml
+        # run: mvn deploy:deploy-file -Dfile=testwar.war -s settings.xml -Durl=https://maven.pkg.github.com/andidroid/testwar -DpomFile=pom.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
