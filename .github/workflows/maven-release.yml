@@ -40,7 +40,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn release:perform -B -DskipTests -DskipITs -Dmaven.test.skip=true -s settings.xml
+        run: mvn release:perform -B -DskipTests -DskipITs -Dmaven.test.skip=true -Dgoals=deploy -s settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
