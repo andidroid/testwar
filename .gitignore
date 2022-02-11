@@ -4,6 +4,8 @@
 /.project
 /.idea/
 
+/bootable/
+
 # Eclipse
 .classpath
 .project
