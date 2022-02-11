@@ -264,6 +264,8 @@ jobs:
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
           mvn -B scm-publish:publish-scm -s $GITHUB_WORKSPACE/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/upload-artifact@v2
         with:
           name: site-artifact
