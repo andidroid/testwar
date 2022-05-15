@@ -78,7 +78,7 @@
     <postgres.version>42.3.5</postgres.version>
 
 
-    <mockito.version>4.1.0</mockito.version>
+    <mockito.version>4.5.1</mockito.version>
     <rest-assured.version>5.0.1</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.17.1</testcontainers.version>
