@@ -77,11 +77,10 @@
     <flyway.version>8.5.11</flyway.version>
     <postgres.version>42.4.0</postgres.version>
 
-
     <mockito.version>4.5.1</mockito.version>
     <rest-assured.version>5.1.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.17.1</testcontainers.version>
+    <testcontainers.version>1.17.2</testcontainers.version>
     <mockserver-client-java.version>5.13.2</mockserver-client-java.version>
     <greenmail.version>1.6.9</greenmail.version>
     <awaitility.version>4.2.0</awaitility.version>
