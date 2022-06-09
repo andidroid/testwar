@@ -72,14 +72,14 @@
 
     <kafka.version>3.1.0</kafka.version>
 
-    <jkube.version>1.7.0</jkube.version>
+    <jkube.version>1.8.0</jkube.version>
     <jib.version>3.2.1</jib.version>
     <flyway.version>8.5.11</flyway.version>
-    <postgres.version>42.3.5</postgres.version>
+    <postgres.version>42.4.0</postgres.version>
 
 
     <mockito.version>4.5.1</mockito.version>
-    <rest-assured.version>5.0.1</rest-assured.version>
+    <rest-assured.version>5.1.0</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.17.1</testcontainers.version>
     <mockserver-client-java.version>5.13.2</mockserver-client-java.version>
