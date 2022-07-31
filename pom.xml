@@ -88,7 +88,7 @@
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>5.0.0.Alpha3</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
-    <arquillian.version>1.7.0.Alpha10</arquillian.version>
+    <arquillian.version>1.7.0.Alpha11</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
 
   </properties>
