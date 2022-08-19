@@ -68,14 +68,14 @@
     <wildfly-datasources-galleon-pack.version>2.2.0.Final</wildfly-datasources-galleon-pack.version>
     <wildfly-maven-plugin.version>3.0.2.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>7.0.2.Final</wildfly-jar-maven-plugin.version>
-    <windup-maven-plugin.version>5.3.0.Final</windup-maven-plugin.version>
+    <windup-maven-plugin.version>6.0.0.Final</windup-maven-plugin.version>
 
     <kafka.version>3.1.0</kafka.version>
 
     <jkube.version>1.8.0</jkube.version>
     <jib.version>3.2.1</jib.version>
     <flyway.version>9.0.4</flyway.version>
-    <postgres.version>42.4.0</postgres.version>
+    <postgres.version>42.4.2</postgres.version>
 
     <mockito.version>4.6.1</mockito.version>
     <rest-assured.version>5.1.1</rest-assured.version>
@@ -86,7 +86,7 @@
     <awaitility.version>4.2.0</awaitility.version>
 
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
-    <arquillian-wildfly.version>5.0.0.Alpha3</arquillian-wildfly.version>
+    <arquillian-wildfly.version>5.0.0.Alpha4</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
     <arquillian.version>1.7.0.Alpha11</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
