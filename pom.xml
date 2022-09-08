@@ -67,7 +67,7 @@
     <wildfly.version>27.0.0.Alpha1</wildfly.version>
     <wildfly-datasources-galleon-pack.version>2.2.0.Final</wildfly-datasources-galleon-pack.version>
     <wildfly-maven-plugin.version>3.0.2.Final</wildfly-maven-plugin.version>
-    <wildfly-jar-maven-plugin.version>7.0.2.Final</wildfly-jar-maven-plugin.version>
+    <wildfly-jar-maven-plugin.version>8.0.0.Final</wildfly-jar-maven-plugin.version>
     <windup-maven-plugin.version>6.0.0.Final</windup-maven-plugin.version>
 
     <kafka.version>3.1.0</kafka.version>
@@ -77,7 +77,7 @@
     <flyway.version>9.2.0</flyway.version>
     <postgres.version>42.5.0</postgres.version>
 
-    <mockito.version>4.7.0</mockito.version>
+    <mockito.version>4.8.0</mockito.version>
     <rest-assured.version>5.1.1</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.17.3</testcontainers.version>
@@ -345,7 +345,7 @@
     <dependency>
       <groupId>io.smallrye</groupId>
       <artifactId>smallrye-health-ui</artifactId>
-      <version>3.2.1</version>
+      <version>4.0.0</version>
     </dependency>
 
   </dependencies>
