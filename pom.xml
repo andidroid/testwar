@@ -64,13 +64,13 @@
 
     <testhollowjar.version>0.4.0-SNAPSHOT</testhollowjar.version>
 
-    <wildfly.version>27.0.0.Alpha4</wildfly.version>
-    <wildfly-datasources-galleon-pack.version>2.2.5.Final</wildfly-datasources-galleon-pack.version>
+    <wildfly.version>27.0.0.Beta1</wildfly.version>
+    <wildfly-datasources-galleon-pack.version>3.0.0.Beta1</wildfly-datasources-galleon-pack.version>
     <wildfly-maven-plugin.version>4.0.0.Beta3</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>8.0.0.Final</wildfly-jar-maven-plugin.version>
     <windup-maven-plugin.version>6.0.0.Final</windup-maven-plugin.version>
 
-    <kafka.version>3.1.0</kafka.version>
+    <kafka.version>3.2.2</kafka.version>
 
     <jkube.version>1.9.1</jkube.version>
     <jib.version>3.3.0</jib.version>
