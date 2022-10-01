@@ -1,0 +1,16 @@
+{
+  "namespace": "EntityMessage.avro",
+  "type": "record",
+  "name": "EntityMessage",
+  "fields": [
+    { "name": "id", "type": "long" },
+    {
+      "type": "enum",
+      "name": "messagetype",
+
+      "symbols": ["CREATED", "READ", "UPDATED", "DELETED"]
+    },
+    { "name": "module", "type": ["string", "null"] },
+    { "name": "time", "type": ["long", "null"] }
+  ]
+}

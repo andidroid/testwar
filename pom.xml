@@ -77,6 +77,8 @@
     <flyway.version>8.4.4</flyway.version>
     <postgres.version>42.3.3</postgres.version>
 
+    <avro.version>1.11.0</avro.version>
+
 
     <mockito.version>4.1.0</mockito.version>
     <rest-assured.version>4.4.0</rest-assured.version>
@@ -583,7 +585,7 @@
             <!--
             <layer>remote-activemq</layer>
             -->
-            
+
             <layer>postgresql-datasource</layer>
 
             <layer>web-console</layer>
@@ -649,6 +651,28 @@
           </execution>
         </executions>
       -->
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.avro</groupId>
+        <artifactId>avro-maven-plugin</artifactId>
+        <version>${avro.version}</version>
+        <executions>
+          <execution>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>schema</goal>
+            </goals>
+            <configuration>
+              <sourceDirectory>${project.basedir}/src/main/avro/</sourceDirectory>
+              <includes>
+                <include>EntityMessage.avsc</include>
+              </includes>
+              <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
+              <!-- <outputDirectory>${project.basedir}/src/main/java/</outputDirectory> -->
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
