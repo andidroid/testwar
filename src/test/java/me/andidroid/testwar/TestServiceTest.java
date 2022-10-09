@@ -2,7 +2,7 @@ package me.andidroid.testwar;
 
 import org.junit.jupiter.api.Test;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import org.junit.jupiter.api.Assertions;
 import org.mockito.Mockito;

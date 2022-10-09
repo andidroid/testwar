@@ -4,7 +4,7 @@
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>0.0.36</version>
+    <version>0.0.37</version>
   </parent>
   <artifactId>testwar</artifactId>
   <version>0.4.0-SNAPSHOT</version>
@@ -62,7 +62,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <testhollowjar.version>0.4.0-SNAPSHOT</testhollowjar.version>
+    <testhollowjar.version>0.4.1-SNAPSHOT</testhollowjar.version>
 
     <wildfly.version>27.0.0.Beta1</wildfly.version>
     <wildfly-datasources-galleon-pack.version>3.0.0.Beta1</wildfly-datasources-galleon-pack.version>
@@ -82,7 +82,7 @@
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.17.4</testcontainers.version>
     <mockserver-client-java.version>5.14.0</mockserver-client-java.version>
-    <greenmail.version>1.6.10</greenmail.version>
+    <greenmail.version>2.0.0-alpha-2</greenmail.version>
     <awaitility.version>4.2.0</awaitility.version>
 
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
@@ -126,13 +126,13 @@
         <scope>import</scope>
       </dependency>
       <!-- importing the jakartaee8-with-tools BOM adds specs and other useful artifacts as managed dependencies -->
-      <dependency>
+      <!-- <dependency>
         <groupId>org.wildfly.bom</groupId>
-        <artifactId>wildfly-jakartaee8-with-tools</artifactId>
+        <artifactId>wildfly-ee-with-tools</artifactId>
         <version>${wildfly.version}</version>
         <type>pom</type>
         <scope>import</scope>
-      </dependency>
+      </dependency> -->
 
       <dependency>
         <groupId>me.andidroid</groupId>
