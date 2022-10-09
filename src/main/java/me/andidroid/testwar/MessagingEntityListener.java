@@ -6,6 +6,7 @@ import jakarta.annotation.Resource;
 import jakarta.inject.Inject;
 import jakarta.jms.JMSContext;
 import jakarta.jms.JMSProducer;
+import jakarta.jms.Queue;
 import jakarta.jms.TextMessage;
 import jakarta.jms.Topic;
 import jakarta.json.Json;
