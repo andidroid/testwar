@@ -68,7 +68,7 @@
     <wildfly-datasources-galleon-pack.version>3.0.0.Beta1</wildfly-datasources-galleon-pack.version>
     <wildfly-maven-plugin.version>4.0.0.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>8.1.0.Final</wildfly-jar-maven-plugin.version>
-    <windup-maven-plugin.version>6.1.1.Final</windup-maven-plugin.version>
+    <windup-maven-plugin.version>6.1.2.Final</windup-maven-plugin.version>
 
     <kafka.version>3.2.2</kafka.version>
 
