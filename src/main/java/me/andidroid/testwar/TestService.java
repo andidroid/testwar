@@ -15,9 +15,6 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
-import org.eclipse.microprofile.opentracing.Traced;
-
-@Traced
 @RequestScoped
 public class TestService
 {
