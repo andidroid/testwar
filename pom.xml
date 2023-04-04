@@ -74,7 +74,7 @@
 
     <jkube.version>1.11.0</jkube.version>
     <jib.version>3.3.1</jib.version>
-    <flyway.version>9.16.1</flyway.version>
+    <flyway.version>9.16.2</flyway.version>
     <postgres.version>42.6.0</postgres.version>
 
     <mockito.version>5.2.0</mockito.version>
