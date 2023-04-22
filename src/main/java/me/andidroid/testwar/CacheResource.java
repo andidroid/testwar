@@ -10,29 +10,18 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.MediaType;
 
-import io.opentelemetry.instrumentation.annotations.WithSpan;
-
-@Path("/test")
-public class TestResource {
+@Path("/cache")
+public class CacheResource {
 
     @Inject
-    private TestService testService;
-
-    @GET
-    @Path("/all")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
-    // @Consumes(MediaType.APPLICATION_JSON)
-    @WithSpan
-    public Response getAll() {
-        return Response.ok(testService.getAll()).build();
-    }
+    private CacheService cacheService;
 
     @GET
     @Path("/{id}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.TEXT_PLAIN })
     // @Consumes(MediaType.APPLICATION_JSON)
-    @WithSpan
     public Response getById(@PathParam(value = "id") String id) {
-        return Response.ok(testService.getById(Long.parseLong(id))).build();
+        cacheService.putRemoteCache(id, "test");
+        return Response.ok(cacheService.getRemoteCache(id)).build();
     }
 }

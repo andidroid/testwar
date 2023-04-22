@@ -1,0 +1,11 @@
+{
+    "realm": "testrealm",
+    "provider": "keycloak", 
+    "auth-server-url": "http://localhost:9080/",
+    "ssl-required": "external",
+    "resource": "testwar",
+    "credentials": {
+      "secret": "clientpassword"
+    },
+    "confidential-port": 0
+  }
