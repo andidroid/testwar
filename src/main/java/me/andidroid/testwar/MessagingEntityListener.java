@@ -112,6 +112,7 @@ public class MessagingEntityListener {
                 producer.setTimeToLive(EXPIRATION_TIME);
                 producer.setAsync(new AsyncMessageCompletionListener());
                 producer.send(this.topic, message);
+
             }
         } catch (Exception e) {
             LOGGER.error("error sending async message to sse bradcaster", e);

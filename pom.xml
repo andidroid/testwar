@@ -396,6 +396,27 @@
         <scope>provided</scope>
     </dependency>
 
+    <dependency>
+        <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-core-jakarta</artifactId>
+        <version>${infinispan.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-query-jakarta</artifactId>
+        <version>${infinispan.version}</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-client-hotrod-jakarta</artifactId>
+        <version>${infinispan.version}</version>
+        <scope>provided</scope>
+    </dependency>
+
+
+
 <dependency>
     <groupId>org.jboss.resteasy</groupId>
     <artifactId>resteasy-core</artifactId>

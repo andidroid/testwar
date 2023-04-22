@@ -64,23 +64,6 @@ public class TestService {
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("id")));
 
         TypedQuery<Test> query = this.em.createQuery(criteriaQuery);
-
-        List<Test> resultList = query.getResultList();
-        return resultList;
-    }
-
-    public Collection<Test> getAll() {
-        LOGGER.info("TestService.getAll()");
-
-        CriteriaBuilder criteriaBuilder = this.em.getCriteriaBuilder();
-        CriteriaQuery<Test> criteriaQuery = criteriaBuilder.createQuery(Test.class);
-        Root<Test> root = criteriaQuery.from(Test.class);
-
-        criteriaQuery.select(root);
-
-        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("id")));
-
-        TypedQuery<Test> query = this.em.createQuery(criteriaQuery);
         // if(this.isCacheable())
         // {
         // // set "org.hibernate.cacheable" to true
