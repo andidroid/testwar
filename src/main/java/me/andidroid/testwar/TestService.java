@@ -15,44 +15,58 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
 
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.Tracer;
+
 @RequestScoped
-public class TestService
-{
+public class TestService {
     /**
      * Logging via slf4j api
      */
     private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger(TestService.class);
-    
+
     @PersistenceContext
     private EntityManager em;
-    
-    public TestService()
-    {
-        
+
+    @Inject
+    private Tracer tracer;
+
+    public TestService() {
+
     }
-    
-    public TestService(EntityManager em)
-    {
+
+    public TestService(EntityManager em) {
         this.em = em;
     }
-    
-    public Test getById(long id)
-    {
-        return em.find(Test.class, id);
+
+    public Test getById(long id) {
+        Span prepareHelloSpan = tracer.spanBuilder("prepare-hello").startSpan();
+        prepareHelloSpan.makeCurrent();
+
+        String hello = "hello";
+
+        Span processHelloSpan = tracer.spanBuilder("process-hello").startSpan();
+        processHelloSpan.makeCurrent();
+
+        Test test = em.find(Test.class, id);
+
+        processHelloSpan.end();
+        prepareHelloSpan.end();
+
+        return test;
     }
-    
-    public Collection<Test> getAll()
-    {
+
+    public Collection<Test> getAll() {
         LOGGER.info("TestService.getAll()");
-        
+
         CriteriaBuilder criteriaBuilder = this.em.getCriteriaBuilder();
         CriteriaQuery<Test> criteriaQuery = criteriaBuilder.createQuery(Test.class);
         Root<Test> root = criteriaQuery.from(Test.class);
-        
+
         criteriaQuery.select(root);
-        
+
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("id")));
-        
+
         TypedQuery<Test> query = this.em.createQuery(criteriaQuery);
         // if(this.isCacheable())
         // {
