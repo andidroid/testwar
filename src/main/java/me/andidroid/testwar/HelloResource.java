@@ -4,7 +4,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.Response;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.metrics.annotation.ConcurrentGauge;
 import org.eclipse.microprofile.metrics.annotation.Counted;
 
 import jakarta.ws.rs.GET;
