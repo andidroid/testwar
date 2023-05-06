@@ -64,16 +64,7 @@ public class TestService {
         criteriaQuery.orderBy(criteriaBuilder.asc(root.get("id")));
 
         TypedQuery<Test> query = this.em.createQuery(criteriaQuery);
-        // if(this.isCacheable())
-        // {
-        // // set "org.hibernate.cacheable" to true
-        // query.setHint(QueryHints.CACHEABLE, Boolean.TRUE);
-        // }
-        // if(this.isReadonly())
-        // {
-        // // set "org.hibernate.readOnly" to true
-        // query.setHint(QueryHints.READ_ONLY, Boolean.TRUE);
-        // }
+
         List<Test> resultList = query.getResultList();
         return resultList;
     }
