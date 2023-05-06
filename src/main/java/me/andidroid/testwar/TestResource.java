@@ -7,7 +7,6 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Produces;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.core.MediaType;
 
 import io.opentelemetry.instrumentation.annotations.WithSpan;

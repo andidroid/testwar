@@ -9,7 +9,7 @@
     <login-config>
         <auth-method>OIDC</auth-method>
     </login-config>
-
+<!--
     <context-param>
         <param-name>resteasy.server.tracing.type</param-name>
         <param-value>ALL</param-value>
@@ -18,4 +18,6 @@
         <param-name>resteasy.server.tracing.threshold</param-name>
         <param-value>SUMMARY</param-value>
     </context-param>
+-->
+
 </web-app>
