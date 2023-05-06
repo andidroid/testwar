@@ -23,3 +23,6 @@ http://localhost:8080/test/1
 
 http://localhost:8080/testwar/testservice/test/1
 curl http://localhost:8080/testwar/testservice/test/1
+
+
+$ mvn wildfly:deploy -DskipTests=true -Djavax.net.ssl.trustStore=D:/Programmierung/Git/testhollowjar/galleon/wildfly/standalone/configuration/client.truststore -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=D:/Programmierung/Git/testhollowjar/galleon/wildfly/standalone/configuration/client.keystore -Djavax.net.ssl.keyStorePassword=password
