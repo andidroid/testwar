@@ -94,6 +94,8 @@
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
     <gatling.version>3.9.3</gatling.version>
     <gatling-maven-plugin.version>4.3.1</gatling-maven-plugin.version>
+
+    <wildfly.home>D:\Programmierung\Git\testhollowjar\galleon\wildfly</wildfly.home>
   </properties>
 
   <!-- External non standard repositories -->
@@ -394,6 +396,12 @@
         <scope>provided</scope>
     </dependency>
 
+<dependency>
+    <groupId>org.jboss.resteasy</groupId>
+    <artifactId>resteasy-core</artifactId>
+    <version>6.2.3.Final</version>
+        <scope>provided</scope>
+</dependency>
 
 
 
@@ -603,13 +611,13 @@
         <artifactId>wildfly-maven-plugin</artifactId>
         <version>${wildfly-maven-plugin.version}</version>
         <configuration>
-          <jboss-home>D:\Programmierung\Git\testhollowjar\galleon\wildfly</jboss-home>
+          <jboss-home>${wildfly.home}</jboss-home>
           <!--<jboss-home>target/bootable-jar-build-artifacts/wildfly</jboss-home>-->
           <hostname>localhost</hostname>
           <port>9993</port>
           <protocol>https-remoting</protocol>
 
-<java-opts>-Djavax.net.ssl.trustStore=D:/Programmierung/Git/testhollowjar/galleon/wildfly/standalone/configuration/client.truststore -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=D:/Programmierung/Git/testhollowjar/galleon/wildfly/standalone/configuration/client.keystore -Djavax.net.ssl.keyStorePassword=password</java-opts>
+          <java-opts>-Djavax.net.ssl.trustStore=${wildfly.home}/standalone/configuration/client.truststore -Djavax.net.ssl.trustStorePassword=password -Djavax.net.ssl.keyStore=${wildfly.home}/standalone/configuration/client.keystore -Djavax.net.ssl.keyStorePassword=password</java-opts>
 
         </configuration>
       </plugin>
