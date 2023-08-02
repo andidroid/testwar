@@ -32,8 +32,9 @@ public class TestService {
 
     }
 
-    public TestService(EntityManager em) {
+    public TestService(EntityManager em, Tracer tracer) {
         this.em = em;
+        this.tracer = tracer;
     }
 
     public Test getById(long id) {
