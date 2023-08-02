@@ -8,8 +8,16 @@
     <!-- Configuration to be used when the WildFly managed profile is active -->
     <container qualifier="wildfly-managed" default="true">
         <configuration>
-            <property name="jbossHome">${jbossHome:target/wildfly}</property>
+            <!-- <property name="jbossHome">${wildfly.home:target/wildfly}</property> -->
+            <property name="jbossHome">D:\Programmierung\Git\testhollowjar\galleon\wildfly</property>
+            
             <property name="serverConfig">standalone.xml</property>
+
+            
+            <property name="managementAddress">127.0.0.1</property>
+            <property name="managementPort">9993</property>
+            <property name="waitForPorts">9993</property>
+            <property name="waitForPortsTimeoutInSeconds">8</property>
         </configuration>
     </container>
 
@@ -18,8 +26,8 @@
             <property name="jarFile">${bootable.jar}</property>
             <property name="allowConnectingToRunningServer">false</property>
             <property name="managementAddress">127.0.0.1</property>
-            <property name="managementPort">9990</property>
-            <property name="waitForPorts">9990</property>
+            <property name="managementPort">9993</property>
+            <property name="waitForPorts">9993</property>
             <property name="waitForPortsTimeoutInSeconds">8</property>
         </configuration>
     </container>
