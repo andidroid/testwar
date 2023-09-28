@@ -4,10 +4,10 @@
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.5.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -62,9 +62,9 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <testhollowjar.version>0.4.1-SNAPSHOT</testhollowjar.version>
+    <testhollowjar.version>0.5.0-SNAPSHOT</testhollowjar.version>
 
-    <wildfly.version>29.0.1.Final</wildfly.version>
+    <wildfly.version>30.0.0.Beta1</wildfly.version>
     <wildfly-datasources-galleon-pack.version>3.0.0.Beta1</wildfly-datasources-galleon-pack.version>
     <wildfly-maven-plugin.version>4.2.0.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>10.0.0.Final</wildfly-jar-maven-plugin.version>
