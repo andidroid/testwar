@@ -4,10 +4,10 @@
   <parent>
     <groupId>me.andidroid</groupId>
     <artifactId>test</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
   </parent>
   <artifactId>testwar</artifactId>
-  <version>0.4.0-SNAPSHOT</version>
+  <version>0.5.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
   <name>testwar</name>
@@ -62,35 +62,36 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <testhollowjar.version>0.4.1-SNAPSHOT</testhollowjar.version>
+    <testhollowjar.version>0.5.0-SNAPSHOT</testhollowjar.version>
 
-    <wildfly.version>29.0.0.Final</wildfly.version>
+    <wildfly.version>30.0.0.Beta1</wildfly.version>
     <wildfly-datasources-galleon-pack.version>5.0.0.Final</wildfly-datasources-galleon-pack.version>
+
     <wildfly-maven-plugin.version>4.2.0.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>10.0.0.Final</wildfly-jar-maven-plugin.version>
-    <windup-maven-plugin.version>6.2.5.Final</windup-maven-plugin.version>
+    <windup-maven-plugin.version>6.3.1.Final</windup-maven-plugin.version>
 
-    <kafka.version>3.5.0</kafka.version>
+    <kafka.version>3.5.1</kafka.version>
 
-    <jkube.version>1.13.1</jkube.version>
-    <jib.version>3.3.2</jib.version>
-    <flyway.version>9.21.0</flyway.version>
+    <jkube.version>1.14.0</jkube.version>
+    <jib.version>3.4.0</jib.version>
+    <flyway.version>9.22.2</flyway.version>
     <postgres.version>42.6.0</postgres.version>
     <infinispan.version>14.0.8.Final</infinispan.version>
     <opentelemetry.version>1.20.0</opentelemetry.version>
 
-    <mockito.version>5.4.0</mockito.version>
-    <rest-assured.version>5.3.1</rest-assured.version>
+    <mockito.version>5.5.0</mockito.version>
+    <rest-assured.version>5.3.2</rest-assured.version>
     <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.18.3</testcontainers.version>
+    <testcontainers.version>1.19.0</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
-    <greenmail.version>2.1.0-alpha-1</greenmail.version>
+    <greenmail.version>2.1.0-alpha-2</greenmail.version>
     <awaitility.version>4.2.0</awaitility.version>
 
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>5.0.1.Final</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
-    <arquillian.version>1.7.0.Final</arquillian.version>
+    <arquillian.version>1.7.1.Final</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
     <gatling.version>3.9.3</gatling.version>
     <gatling-maven-plugin.version>4.3.1</gatling-maven-plugin.version>
