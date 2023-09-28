@@ -77,7 +77,7 @@
     <jib.version>3.4.0</jib.version>
     <flyway.version>9.22.2</flyway.version>
     <postgres.version>42.6.0</postgres.version>
-    <infinispan.version>14.0.8.Final</infinispan.version>
+    <infinispan.version>14.0.17.Final</infinispan.version>
     <opentelemetry.version>1.20.0</opentelemetry.version>
 
     <mockito.version>5.5.0</mockito.version>
@@ -93,8 +93,8 @@
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
     <arquillian.version>1.7.1.Final</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
-    <gatling.version>3.9.3</gatling.version>
-    <gatling-maven-plugin.version>4.3.1</gatling-maven-plugin.version>
+    <gatling.version>3.9.5</gatling.version>
+    <gatling-maven-plugin.version>4.5.0</gatling-maven-plugin.version>
 
     <wildfly.home>D:\Programmierung\Git\testhollowjar\galleon\wildfly</wildfly.home>
   </properties>
@@ -400,7 +400,7 @@
 <dependency>
     <groupId>org.jboss.resteasy</groupId>
     <artifactId>resteasy-core</artifactId>
-    <version>6.2.3.Final</version>
+    <version>6.2.5.Final</version>
         <scope>provided</scope>
 </dependency>
 
