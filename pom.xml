@@ -400,7 +400,7 @@
 <dependency>
     <groupId>org.jboss.resteasy</groupId>
     <artifactId>resteasy-core</artifactId>
-    <version>6.2.3.Final</version>
+    <version>6.2.5.Final</version>
         <scope>provided</scope>
 </dependency>
 
