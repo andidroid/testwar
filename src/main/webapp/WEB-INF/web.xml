@@ -5,4 +5,19 @@
          id="WebApp_ID"
          version="6.0">
     <distributable />
+
+    <login-config>
+        <auth-method>OIDC</auth-method>
+    </login-config>
+<!--
+    <context-param>
+        <param-name>resteasy.server.tracing.type</param-name>
+        <param-value>ALL</param-value>
+    </context-param>
+    <context-param>
+        <param-name>resteasy.server.tracing.threshold</param-name>
+        <param-value>SUMMARY</param-value>
+    </context-param>
+-->
+
 </web-app>

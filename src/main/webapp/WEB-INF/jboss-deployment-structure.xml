@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jboss-deployment-structure>
+    <deployment>
+        <dependencies>
+            <module name="org.infinispan" export="TRUE" />
+            <module name="org.infinispan.commons" export="TRUE" />
+            <module name="org.infinispan.client.hotrod" export="TRUE" />
+            <module name="org.infinispan.query.dsl" export="TRUE" />
+        </dependencies>
+    </deployment>
+</jboss-deployment-structure>
