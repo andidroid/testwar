@@ -85,7 +85,7 @@
     <microshed.version>0.9.1</microshed.version>
     <testcontainers.version>1.19.1</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
-    <greenmail.version>2.1.0-alpha-2</greenmail.version>
+    <greenmail.version>2.1.0-alpha-3</greenmail.version>
     <awaitility.version>4.2.0</awaitility.version>
 
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
