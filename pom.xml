@@ -64,7 +64,7 @@
 
     <testhollowjar.version>0.5.0-SNAPSHOT</testhollowjar.version>
 
-    <wildfly.version>30.0.0.Final</wildfly.version>
+    <wildfly.version>30.0.1.Final</wildfly.version>
     <wildfly-datasources-galleon-pack.version>5.0.0.Final</wildfly-datasources-galleon-pack.version>
 
     <wildfly-maven-plugin.version>4.2.1.Final</wildfly-maven-plugin.version>
