@@ -289,6 +289,12 @@
       <version>${microshed.version}</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.microshed</groupId>
+      <artifactId>microshed-testing-core-jakarta</artifactId>
+      <version>${microshed.version}</version>
+      <scope>test</scope>
+    </dependency>
     <!--
   -->
     <!--
