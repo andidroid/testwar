@@ -82,7 +82,7 @@
 
     <mockito.version>5.8.0</mockito.version>
     <rest-assured.version>5.4.0</rest-assured.version>
-    <microshed.version>0.9.1</microshed.version>
+    <microshed.version>0.9.2</microshed.version>
     <testcontainers.version>1.19.3</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
     <greenmail.version>2.1.0-alpha-3</greenmail.version>
@@ -286,6 +286,12 @@
     <dependency>
       <groupId>org.microshed</groupId>
       <artifactId>microshed-testing-testcontainers</artifactId>
+      <version>${microshed.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.microshed</groupId>
+      <artifactId>microshed-testing-core-jakarta</artifactId>
       <version>${microshed.version}</version>
       <scope>test</scope>
     </dependency>
