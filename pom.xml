@@ -64,26 +64,27 @@
 
     <testhollowjar.version>0.5.0-SNAPSHOT</testhollowjar.version>
 
-    <wildfly.version>30.0.0.Final</wildfly.version>
+    <wildfly.version>30.0.1.Final</wildfly.version>
     <wildfly-datasources-galleon-pack.version>5.0.0.Final</wildfly-datasources-galleon-pack.version>
 
     <wildfly-maven-plugin.version>4.2.1.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>10.0.0.Final</wildfly-jar-maven-plugin.version>
-    <windup-maven-plugin.version>6.3.3.Final</windup-maven-plugin.version>
+    <windup-maven-plugin.version>6.3.4.Final</windup-maven-plugin.version>
 
     <kafka.version>3.5.1</kafka.version>
 
     <jkube.version>1.15.0</jkube.version>
     <jib.version>3.4.0</jib.version>
-    <flyway.version>10.0.0</flyway.version>
-    <postgres.version>42.6.0</postgres.version>
-    <infinispan.version>14.0.20.Final</infinispan.version>
+
+    <flyway.version>10.4.0</flyway.version>
+    <postgres.version>42.7.1</postgres.version>
+    <infinispan.version>14.0.21.Final</infinispan.version>
     <opentelemetry.version>1.29.0</opentelemetry.version>
 
-    <mockito.version>5.7.0</mockito.version>
-    <rest-assured.version>5.3.2</rest-assured.version>
-    <microshed.version>0.9.1</microshed.version>
-    <testcontainers.version>1.19.1</testcontainers.version>
+    <mockito.version>5.8.0</mockito.version>
+    <rest-assured.version>5.4.0</rest-assured.version>
+    <microshed.version>0.9.2</microshed.version>
+    <testcontainers.version>1.19.3</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
     <greenmail.version>2.1.0-alpha-3</greenmail.version>
     <awaitility.version>4.2.0</awaitility.version>
@@ -91,10 +92,10 @@
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>5.0.1.Final</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
-    <arquillian.version>1.7.2.Final</arquillian.version>
+    <arquillian.version>1.8.0.Final</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
-    <gatling.version>3.9.5</gatling.version>
-    <gatling-maven-plugin.version>4.6.0</gatling-maven-plugin.version>
+    <gatling.version>3.10.3</gatling.version>
+    <gatling-maven-plugin.version>4.7.0</gatling-maven-plugin.version>
 
     <wildfly.home>D:\Programmierung\Git\testhollowjar\galleon\wildfly</wildfly.home>
   </properties>
@@ -286,6 +287,12 @@
     <dependency>
       <groupId>org.microshed</groupId>
       <artifactId>microshed-testing-testcontainers</artifactId>
+      <version>${microshed.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.microshed</groupId>
+      <artifactId>microshed-testing-core-jakarta</artifactId>
       <version>${microshed.version}</version>
       <scope>test</scope>
     </dependency>
