@@ -87,7 +87,7 @@
     <testcontainers.version>1.19.7</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
     <greenmail.version>2.1.0-alpha-4</greenmail.version>
-    <awaitility.version>4.2.0</awaitility.version>
+    <awaitility.version>4.2.1</awaitility.version>
 
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>5.0.1.Final</arquillian-wildfly.version>
