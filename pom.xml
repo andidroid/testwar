@@ -74,7 +74,7 @@
     <kafka.version>3.7.0</kafka.version>
 
     <jkube.version>1.16.2</jkube.version>
-    <jib.version>3.4.1</jib.version>
+    <jib.version>3.4.2</jib.version>
 
     <flyway.version>10.11.0</flyway.version>
     <postgres.version>42.7.3</postgres.version>
