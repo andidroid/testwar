@@ -7,7 +7,7 @@
     <distributable />
 
     <login-config>
-        <auth-method>OIDC</auth-method>
+        <!-- <auth-method>OIDC</auth-method> -->
     </login-config>
 <!--
     <context-param>

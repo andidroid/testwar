@@ -1,0 +1,1 @@
+java -jar ../testhollowjar/target/testhollowjar.jar --deployment=target/testwar.war

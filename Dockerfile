@@ -2,5 +2,5 @@
 # COPY src/main/liberty/config /config/
 # ADD target/testwar.war /config/dropins/
 # Wildfly
-FROM ghcr.io/andidroid/testhollowjar:latest
+FROM andidroid/testhollowjar:latest
 COPY target/testwar.war /deployments/ROOT.war

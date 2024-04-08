@@ -1,6 +1,6 @@
 {
     "realm": "testrealm",
-    "provider": "keycloak", 
+    // "provider": "keycloak", 
     "auth-server-url": "http://localhost:9080/",
     "ssl-required": "external",
     "resource": "testwar",

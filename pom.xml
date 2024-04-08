@@ -62,7 +62,7 @@
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
-    <testhollowjar.version>0.5.0-SNAPSHOT</testhollowjar.version>
+    <testhollowjar.version>0.5.6-SNAPSHOT</testhollowjar.version>
 
     <wildfly.version>31.0.0.Final</wildfly.version>
     <wildfly-datasources-galleon-pack.version>5.0.0.Final</wildfly-datasources-galleon-pack.version>
@@ -402,6 +402,12 @@
         <artifactId>infinispan-client-hotrod-jakarta</artifactId>
         <version>${infinispan.version}</version>
         <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.infinispan</groupId>
+        <artifactId>infinispan-server-testdriver-core</artifactId>
+        <version>${infinispan.version}</version>
+        <scope>test</scope>
     </dependency>
 
 <dependency>
