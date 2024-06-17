@@ -350,7 +350,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           file: ./Dockerfile
           context: .
@@ -369,7 +369,7 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v4
       - name: Super-Linter
-        uses: github/super-linter@v5.0.0
+        uses: github/super-linter@v6
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_ALL_CODEBASE: false
