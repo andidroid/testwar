@@ -71,7 +71,7 @@
     <wildfly-jar-maven-plugin.version>11.0.2.Final</wildfly-jar-maven-plugin.version>
     <windup-maven-plugin.version>6.3.8.Final</windup-maven-plugin.version>
 
-    <kafka.version>3.7.0</kafka.version>
+    <kafka.version>3.7.1</kafka.version>
 
     <jkube.version>1.16.2</jkube.version>
     <jib.version>3.4.3</jib.version>
