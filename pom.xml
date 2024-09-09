@@ -94,7 +94,7 @@
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
     <arquillian.version>1.9.1.Final</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
-    <gatling.version>3.11.5</gatling.version>
+    <gatling.version>3.12.0</gatling.version>
     <gatling-maven-plugin.version>4.9.6</gatling-maven-plugin.version>
 
     <wildfly.home>D:\Programmierung\Git\testhollowjar\galleon\wildfly</wildfly.home>
