@@ -67,7 +67,7 @@
     <wildfly.version>33.0.0.Final</wildfly.version>
     <wildfly-datasources-galleon-pack.version>5.0.0.Final</wildfly-datasources-galleon-pack.version>
 
-    <wildfly-maven-plugin.version>5.0.0.Final</wildfly-maven-plugin.version>
+    <wildfly-maven-plugin.version>5.0.1.Final</wildfly-maven-plugin.version>
     <wildfly-jar-maven-plugin.version>11.0.2.Final</wildfly-jar-maven-plugin.version>
     <windup-maven-plugin.version>6.3.9.Final</windup-maven-plugin.version>
 
