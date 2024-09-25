@@ -76,7 +76,7 @@
     <jkube.version>1.17.0</jkube.version>
     <jib.version>3.4.3</jib.version>
 
-    <flyway.version>10.17.3</flyway.version>
+    <flyway.version>10.18.1</flyway.version>
     <postgres.version>42.7.4</postgres.version>
     <infinispan.version>14.0.29.Final</infinispan.version>
     <opentelemetry.version>1.29.0</opentelemetry.version>
