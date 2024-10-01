@@ -84,7 +84,7 @@
     <mockito.version>5.14.1</mockito.version>
     <rest-assured.version>5.5.0</rest-assured.version>
     <microshed.version>0.9.2</microshed.version>
-    <testcontainers.version>1.20.1</testcontainers.version>
+    <testcontainers.version>1.20.2</testcontainers.version>
     <mockserver-client-java.version>5.15.0</mockserver-client-java.version>
     <greenmail.version>2.1.0-rc-1</greenmail.version>
     <awaitility.version>4.2.2</awaitility.version>
