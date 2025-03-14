@@ -73,7 +73,7 @@
 
     <kafka.version>3.7.1</kafka.version>
 
-    <jkube.version>1.17.0</jkube.version>
+    <jkube.version>1.18.1</jkube.version>
     <jib.version>3.4.4</jib.version>
 
     <flyway.version>11.1.0</flyway.version>
