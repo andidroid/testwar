@@ -92,7 +92,7 @@
     <!-- <arquillian-wildfly.version>3.0.1.Final</arquillian-wildfly.version> -->
     <arquillian-wildfly.version>5.0.1.Final</arquillian-wildfly.version>
     <!-- <arquillian-junit.version>1.6.0.Final</arquillian-junit.version> -->
-    <arquillian.version>1.9.3.Final</arquillian.version>
+    <arquillian.version>1.9.4.Final</arquillian.version>
     <shrinkwrap.version>1.2.6</shrinkwrap.version>
     <gatling.version>3.13.5</gatling.version>
     <gatling-maven-plugin.version>4.19.0</gatling-maven-plugin.version>
