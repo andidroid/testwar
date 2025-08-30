@@ -78,7 +78,7 @@
 
     <flyway.version>11.8.2</flyway.version>
     <postgres.version>42.7.7</postgres.version>
-    <infinispan.version>14.0.32.Final</infinispan.version>
+    <infinispan.version>14.0.35.Final</infinispan.version>
     <opentelemetry.version>1.29.0</opentelemetry.version>
 
     <mockito.version>5.18.0</mockito.version>
