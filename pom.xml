@@ -128,7 +128,7 @@
 
       <dependency>
         <groupId>org.wildfly.bom</groupId>
-        <artifactId>wildfly-microprofile</artifactId>
+        <artifactId>wildfly-ee-with-tools </artifactId>
         <version>${wildfly.version}</version>
         <type>pom</type>
         <scope>import</scope>
@@ -176,6 +176,30 @@
       </dependency>
 
       <dependency>
+            <groupId>org.jboss.arquillian</groupId>
+            <artifactId>arquillian-bom</artifactId>
+            <version>${arquillian.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.wildfly.arquillian</groupId>
+            <artifactId>wildfly-arquillian-bom</artifactId>
+            <version>${arquillian-wildfly.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+      <!--  
+      <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>${junit.jupiter.version}</version>
+            <type>pom</type>
+            <scope>import</scope>
+      </dependency>
+      -->
+      <!--
+      <dependency>
         <groupId>org.jboss.arquillian.test</groupId>
         <artifactId>arquillian-test-api</artifactId>
         <version>${arquillian.version}</version>
@@ -205,6 +229,7 @@
         <version>${arquillian.version}</version>
         <scope>test</scope>
       </dependency>
+      -->
       <dependency>
         <groupId>io.gatling.highcharts</groupId>
         <artifactId>gatling-charts-highcharts</artifactId>
