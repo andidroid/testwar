@@ -76,7 +76,7 @@
     <jkube.version>1.18.1</jkube.version>
     <jib.version>3.4.6</jib.version>
 
-    <flyway.version>11.12.0</flyway.version>
+    <flyway.version>11.13.0</flyway.version>
     <postgres.version>42.7.7</postgres.version>
 
     <infinispan.version>15.2.4.Final</infinispan.version>
